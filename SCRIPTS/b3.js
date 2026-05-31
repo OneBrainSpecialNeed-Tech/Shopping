@@ -166,7 +166,7 @@ function showLoseScreen() {
           background: linear-gradient(90deg, #ff5252, #ff1744);"></div>
         <p style="font-size:22px; line-height:1.8; color:rgba(255,255,255,0.85); margin-bottom:30px;">
           נגמר הזמן בשלב ג׳!<br>
-          <span style="font-size:18px; opacity:0.7;">נסי שוב – את יכולה!</span>
+          <span style="font-size:18px; opacity:0.7;">נסה/י שוב – את/ה יכול/ה!</span>
         </p>
         <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
           <button onclick="location.reload()" style="
@@ -175,7 +175,7 @@ function showLoseScreen() {
             color:white; font-size:18px; font-weight:bold; cursor:pointer;
             box-shadow: 0 8px 20px rgba(255,82,82,0.4); transition:0.3s;
           " onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'">
-            🔄 נסי שוב
+            🔄 נסה/י שוב
           </button>
           <button onclick="location.href='../PAGES/choose-level.html'" style="
             padding:14px 32px; border:none; border-radius:50px;

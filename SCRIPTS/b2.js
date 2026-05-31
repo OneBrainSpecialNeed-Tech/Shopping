@@ -118,7 +118,7 @@ function showLoseScreen() {
           background: linear-gradient(90deg, #ff5252, #ff1744);"></div>
         <p style="font-size:22px; line-height:1.8; color:rgba(255,255,255,0.85); margin-bottom:30px;">
           נגמר הזמן בשלב ב׳!<br>
-          <span style="font-size:18px; opacity:0.7;">נסי שוב – את יכולה!</span>
+          <span style="font-size:18px; opacity:0.7;">נסה/י שוב – את/ה יכול/ה!</span>
         </p>
         <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
           <button onclick="location.reload()" style="

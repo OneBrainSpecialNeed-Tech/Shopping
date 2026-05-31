@@ -464,7 +464,7 @@ function goToNextStage() {
   stage++;
 
   if (stage > 3) {
-    location.href = "../login.html";
+    location.href = "../index.html";
   } else {
     localStorage.setItem("currentStage", String(stage));
     window.location.href = "level" + stage + ".html";

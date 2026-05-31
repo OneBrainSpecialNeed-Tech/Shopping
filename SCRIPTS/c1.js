@@ -190,7 +190,7 @@ function showLoseScreen() {
             padding:14px 32px; border:none; border-radius:50px;
             background:linear-gradient(135deg,#ff5252,#d32f2f);
             color:white; font-size:18px; font-weight:bold; cursor:pointer;">
-            🔄 נסי שוב
+            🔄 נסה/י שוב
           </button>
           <button onclick="location.href='../PAGES/choose-level.html'" style="
             padding:14px 32px; border:none; border-radius:50px;
