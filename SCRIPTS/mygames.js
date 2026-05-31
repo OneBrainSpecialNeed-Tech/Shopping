@@ -8,7 +8,7 @@ let chartInstance = null;
 let user = JSON.parse(localStorage.getItem(SESSION_KEY));
 
 if (!user) {
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
 // =======================
@@ -199,5 +199,5 @@ function drawChart(games) {
 // =======================
 
 function goBack() {
-  window.location.href = "../login.html";
+  window.location.href = "../index.html";
 }

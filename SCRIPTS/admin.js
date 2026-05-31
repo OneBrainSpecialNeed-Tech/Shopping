@@ -13,7 +13,7 @@ const GAMES_KEY = "shop_games";
 let user = JSON.parse(localStorage.getItem(SESSION_KEY));
 
 if (!user || user.role !== "admin") {
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
 // =======================
@@ -328,5 +328,5 @@ function clearResults() {
 
 function logout() {
   localStorage.removeItem(SESSION_KEY);
-  window.location.href = "../login.html";
+  window.location.href = "../index.html";
 }
