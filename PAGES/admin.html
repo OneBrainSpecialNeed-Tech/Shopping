@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>מנהל 🛒</title>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../STYLES/admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <h1>🛒 מסך מנהל</h1>
+
+  <div class="layout">
+
+    <!-- =========================
+         צד שמאל - שחקנים
+    ========================== -->
+    <div class="panel">
+
+      <!-- 🔍 חיפוש -->
+      <h2>🔍 חיפוש שחקן</h2>
+
+      <div class="search-box">
+        <input type="text" id="searchUser" placeholder="הקלד שם שחקן">
+        <button onclick="searchUser()">חפש</button>
+      </div>
+
+      <hr>
+
+      <!-- 👤 רשימת שחקנים (כרטיסים) -->
+      <h2>👤 שחקנים</h2>
+
+      <div id="usersList"></div>
+
+      <hr>
+
+      <!-- 📊 פרטי שחקן -->
+      <div id="gameDetails"></div>
+
+      <!-- כפתורים -->
+      <div class="buttons">
+        <button onclick="clearResults()">🧹 איפוס מערכת</button>
+        <button onclick="logout()">🚪 התנתקות</button>
+      </div>
+
+    </div>
+
+    <!-- =========================
+         צד ימין - גרף
+    ========================== -->
+    <div class="chart-panel">
+
+      <div class="chart-header">
+        <h2>📊 גרף התקדמות</h2>
+      </div>
+
+      <canvas id="progressChart"></canvas>
+
+    </div>
+
+  </div>
+
+  <script src="../SCRIPTS/admin.js"></script>
+  <iframe
+  src="music-player.html"
+  style="display:none;"
+></iframe>
+</body>
+
+</html>

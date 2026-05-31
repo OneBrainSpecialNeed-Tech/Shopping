@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <title>Music Player</title>
+</head>
+<body>
+
+<script>
+  const bgm = new Audio("../ASSETS/SOUNDS/bgm.mp3");
+
+  bgm.loop = true;
+  bgm.volume = 0.4;
+
+  // מצב מוזיקה
+  const state = localStorage.getItem("global_bgm");
+
+  if (state !== "off") {
+
+    const startMusic = () => {
+      bgm.play().catch(() => {});
+    };
+
+    // חייב אינטראקציה
+    window.addEventListener("click", startMusic, { once:true });
+
+    startMusic();
+  }
+
+  // האזנה לשינויים
+  window.addEventListener("storage", (e) => {
+
+    if (e.key === "global_bgm") {
+
+      if (e.newValue === "off") {
+        bgm.pause();
+        bgm.currentTime = 0;
+      }
+
+      if (e.newValue === "on") {
+        bgm.play().catch(() => {});
+      }
+
+    }
+
+  });
+</script>
+
+</body>
+</html>

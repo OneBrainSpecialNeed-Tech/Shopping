@@ -1,0 +1,721 @@
+/* ======================= RESET ======================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif;
+}
+
+body {
+    direction: rtl;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+
+    /* 🌈 רקע כמו שלב ב' */
+    background: linear-gradient(
+        145deg,
+        #fff0b3,
+        #ff8fc9,
+        #c09bff,
+        #9fd6ff
+      );
+      
+      background-size: cover;
+      background-attachment: fixed;
+}
+.instructions-btn {
+    position: fixed;
+    top: 70px;
+    left: 5px;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, #d24c72, #dd39bf);
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(229, 83, 83, 0.35);
+    transition: all 0.3s ease;
+    z-index: 9999;
+    border: 1px solid rgba(237, 129, 129, 0.1);
+  }
+  
+  .instructions-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #86b1ee, #475569);
+    box-shadow: 0 12px 30px rgba(58, 193, 198, 0.45);
+  }
+
+/* שכבת glow עדינה כמו שלב ב' */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ======================= טיימר ======================= */
+.timer {
+    width: 200px;
+    background: #ffd54f;
+    padding: 8px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    margin-right: auto;
+}
+
+/* ======================= כותרות חנויות ======================= */
+.shops {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
+    margin-top: 20px;
+}
+
+.shop-title {
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    color: #5d4037;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.7);
+    margin-bottom: 8px;
+}
+
+/* ======================= חנויות ======================= */
+.shops-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    justify-items: center;
+    margin-top: 10px;
+}
+
+.shop {
+    position: relative;
+    width: 245px;
+}
+
+.shop-bg {
+    width: 245px;
+    height: 300px;
+}
+
+/* ======================= פריטים ======================= */
+.item {
+    position: absolute;
+    width: 48px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2;
+}
+
+.item:hover {
+    transform: scale(1.2);
+}
+
+/* מיקומים כלליים (אפשר לשנות לפי טעם) */
+/* מכולת */
+.g1 {
+    bottom: 120px;
+    left: 2px;
+}
+
+.g2 {
+    bottom: 70px;
+    left: 2px;
+}
+
+.g3 {
+    bottom: 170px;
+    left: 2px;
+}
+
+.g4 {
+    bottom: 75px;
+    left: 205px;
+}
+
+.g5 {
+    bottom: 165px;
+    left: 205px;
+}
+
+.g6 {
+    bottom: 120px;
+    left: 205px;
+}
+
+.g7 {
+    bottom: 95px;
+    left: 150px;
+}
+
+.g8 {
+    bottom: 215px;
+    left: 205px;
+}
+
+/* צעצועים */
+.t1 {
+    bottom: 120px;
+    left: 2px;
+}
+
+.t2 {
+    bottom: 70px;
+    left: 2px;
+}
+
+.t3 {
+    bottom: 170px;
+    left: 2px;
+}
+
+.t4 {
+    bottom: 75px;
+    left: 205px;
+}
+
+.t5 {
+    bottom: 165px;
+    left: 205px;
+}
+
+.t6 {
+    bottom: 120px;
+    left: 205px;
+}
+
+.t7 {
+    bottom: 95px;
+    left: 150px;
+}
+
+.t8 {
+    bottom: 215px;
+    left: 205px;
+}
+
+/* תינוקות */
+.b1 {
+    bottom: 120px;
+    left: 2px;
+}
+
+.b2 {
+    bottom: 70px;
+    left: 2px;
+}
+
+.b3 {
+    bottom: 210px;
+    left: 2px;
+}
+
+.b4 {
+    bottom: 75px;
+    left: 205px;
+}
+
+.b5 {
+    bottom: 165px;
+    left: 205px;
+}
+
+.b6 {
+    bottom: 120px;
+    left: 205px;
+}
+
+.b7 {
+    bottom: 95px;
+    left: 150px;
+}
+
+.b8 {
+    bottom: 215px;
+    left: 205px;
+}
+
+/* ירקות */
+.v1 {
+    bottom: 120px;
+    left: 2px;
+}
+
+.v2 {
+    bottom: 70px;
+    left: 2px;
+}
+
+.v3 {
+    bottom: 170px;
+    left: 2px;
+}
+
+.v4 {
+    bottom: 75px;
+    left: 205px;
+}
+
+.v5 {
+    bottom: 165px;
+    left: 205px;
+}
+
+.v6 {
+    bottom: 120px;
+    left: 205px;
+}
+
+.v7 {
+    bottom: 85px;
+    left: 150px;
+}
+
+.v8 {
+    bottom: 215px;
+    left: 205px;
+}
+
+.v9 {
+    bottom: 205px;
+    left: 1px;
+}
+
+/* ניקיון */
+.c1 {
+    bottom: 120px;
+    left: 2px;
+}
+
+.c2 {
+    bottom: 70px;
+    left: 2px;
+}
+
+.c3 {
+    bottom: 170px;
+    left: 2px;
+}
+
+.c4 {
+    bottom: 75px;
+    left: 205px;
+}
+
+.c5 {
+    bottom: 165px;
+    left: 205px;
+}
+
+.c6 {
+    bottom: 120px;
+    left: 205px;
+}
+
+.c7 {
+    bottom: 95px;
+    left: 150px;
+}
+
+.c8 {
+    bottom: 215px;
+    left: 205px;
+}
+
+.c9 {
+    bottom: 165px;
+    left: 150px;
+}
+
+/* קדושה */
+.k1 {
+    bottom: 120px;
+    left: 2px;
+}
+
+.k2 {
+    bottom: 70px;
+    left: 2px;
+}
+
+.k3 {
+    bottom: 170px;
+    left: 2px;
+}
+
+.k4 {
+    bottom: 75px;
+    left: 205px;
+}
+
+.k5 {
+    bottom: 165px;
+    left: 205px;
+}
+
+.k6 {
+    bottom: 210px;
+    left: 205px;
+}
+
+.k7 {
+    bottom: 95px;
+    left: 150px;
+}
+
+.k8 {
+    bottom: 150px;
+    left: 150px;
+}
+
+/* ======================= תחתית (ילדה) ======================= */
+.bottom {
+    top: 50px;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.girl {
+    width: 220px;
+}
+
+/* ======================= אזור הדילמה ======================= */
+/* ======================= 🎯 דילמה - חדש ======================= */
+.dilemma-box {
+    width: 82%;
+    margin: auto;
+    margin-top: 8px;
+    padding: 14px 22px;
+    min-height: 95px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, #fff8dc 0%, #ffffff 45%, #ffe082 100%);
+    border: 4px solid #ffd54f;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), inset 0 0 15px rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* אפקט זוהר */
+.dilemma-box::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+    top: -90px;
+    left: -70px;
+}
+
+/* ======================= 📝 טקסט דילמה ======================= */
+#dilemmaText {
+    flex: 1;
+    text-align: center;
+    font-size: 23px;
+    line-height: 1.8;
+    font-weight: bold;
+    color: #5d4037;
+    z-index: 2;
+}
+
+/* ======================= 🔊 רמקול ======================= */
+#speaker {
+    min-width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #ff9800, #ffb300);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    z-index: 2;
+}
+
+#speaker:hover {
+    transform: scale(1.1) rotate(8deg);
+}
+
+/* ======================= 👧 הילדה ======================= */
+.bottom {
+    margin-top: -15px;
+    position: relative;
+    z-index: 5;
+}
+
+.girl {
+    width: 185px;
+    height: 185px;
+}
+
+/* ======================= 🎉 מסך ניצחון חדש ======================= */
+#winScreen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    backdrop-filter: blur(6px);
+}
+
+#winScreen.hidden {
+    display: none;
+}
+
+/* קופסת ניצחון */
+.win-box {
+    width: 700px;
+    padding: 55px;
+    border-radius: 45px;
+    text-align: center;
+    background: linear-gradient(145deg, #ffffff, #fff8dc);
+    border: 6px solid #ffd54f;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    animation: winnerPop 1s ease;
+}
+
+/* כותרת */
+.win-box h1 {
+    font-size: 78px;
+    color: #ff9800;
+    margin-bottom: 18px;
+    text-shadow: 0 3px 10px rgba(255, 152, 0, 0.4);
+}
+
+/* טקסט */
+.win-box p {
+    font-size: 34px;
+    color: #5d4037;
+    font-weight: bold;
+}
+
+/* כוכבים */
+.stars {
+    margin-top: 25px;
+    font-size: 55px;
+    animation: starsMove 1s infinite alternate;
+}
+
+#logo {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+    width: 100px;
+    height: auto;
+}
+
+
+/* אנימציות */
+@keyframes winnerPop {
+    0% {
+        transform: scale(0.3) rotate(-8deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes starsMove {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ========================= RESPONSIVE FIX LEVEL 3 ========================= */
+/* גלילה תקינה */
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* שלא יברח לצדדים */
+.card.large {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+}
+
+/* hover נשאר */
+.item:hover {
+    transform: scale(1.2);
+    z-index: 999;
+}
+
+/* ========================= טאבלט ========================= */
+@media (max-width: 1400px) {
+    .cart-stack {
+        right: 45px !important;
+    }
+
+    .cart-stack {
+        bottom: 53px !important;
+    }
+
+    .shops {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .shops-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .shop {
+        width: 245px;
+    }
+
+    .bottom {
+        margin-top: 50px;
+        display: flex;
+        justify-content: flex-start;
+        padding-right: 20px;
+    }
+
+    .girl {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* ========================= מובייל ========================= */
+@media (max-width: 900px) {
+
+    /* כותרות */
+    .shops {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .shop-title {
+        font-size: 22px;
+    }
+
+    /* חנות אחת בשורה */
+    .shops-container {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+
+    .shop {
+        width: 245px;
+        margin: auto;
+    }
+
+    .shop-bg {
+        width: 245px;
+        height: 300px;
+    }
+
+    /* דילמה */
+    .dilemma-box {
+        width: 96%;
+        flex-direction: column;
+        padding: 16px;
+        gap: 12px;
+        border-radius: 24px;
+    }
+
+    #dilemmaText {
+        font-size: 18px;
+        line-height: 1.7;
+    }
+
+    #speaker {
+        min-width: 58px;
+        height: 58px;
+        font-size: 28px;
+    }
+
+    /* טיימר */
+    .timer {
+        width: 170px;
+        font-size: 15px;
+    }
+
+    /* הילדה יורדת */
+    .bottom {
+        margin-top: 40px;
+        justify-content: center;
+    }
+
+    .girl {
+        width: 115px;
+        height: 115px;
+    }
+
+    /* מסך ניצחון */
+    .win-box {
+        width: 92%;
+        padding: 28px 18px;
+    }
+
+    .win-box h1 {
+        font-size: 42px;
+    }
+
+    .win-box p {
+        font-size: 24px;
+    }
+}
+
+/* ========================= מובייל קטן ========================= */
+@media (max-width: 500px) {
+    .shop {
+        width: 230px;
+    }
+
+    .shop-bg {
+        width: 230px;
+        height: 285px;
+    }
+
+    .item {
+        width: 44px;
+    }
+
+    #dilemmaText {
+        font-size: 17px;
+    }
+
+    }

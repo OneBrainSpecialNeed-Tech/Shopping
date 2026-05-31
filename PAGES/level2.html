@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <title>שלב ב'</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../STYLES/level2.css">
+</head>
+
+<body>
+    <a href="rules.html" class="instructions-btn">
+        להוראות המשחק
+      </a>
+    <img src="../ASSETS/IMAGES/logo.png" id="logo">
+
+    <div class="card large">
+
+        <!-- טיימר -->
+        <div class="timer">
+            ⏱ <span id="timerLabel">זמן שעבר</span>:
+            <span id="time">00:00</span>
+        </div>
+
+        <!-- רשימות -->
+        <div class="all-lists">
+
+            <div class="list-box">
+                <h3>📝 רשימת קניות1</h3>
+                <ul>
+                    <li>רִמּוֹן</li>
+                    <li>מְעִיל</li>
+                    <li>עֵט</li>
+                </ul>
+            </div>
+            <div class="list-box">
+                <h3>📝 רשימת קניות2</h3>
+                <ul>
+                    <li>שִׂמְלָה</li>
+                    <li>בּוּבָּה</li>
+                    <li>בֵּיצִים</li>
+                </ul>
+            </div>
+            <div class="list-box">
+                <h3>📝 רשימת קניות3</h3>
+                <ul>
+                    <li>בָּנָנָה</li>
+                    <li>פִּיצָה</li>
+                    <li>בָּצָל</li>
+                </ul>
+            </div>
+            <div class="list-box">
+                <h3>📝 רשימת קניות4</h3>
+                <ul>
+                    <li>מַעֲדָן</li>
+                    <li>מַגְלֵשָׁה</li>
+                    <li>אוֹפַנַּיִם</li>
+                </ul>
+            </div>
+            <div class="list-box">
+                <h3>📝 רשימת קניות5</h3>
+                <ul>
+                    <li>מַחְשְׁבוֹן</li>
+                    <li>מִסְפָּרַיִם</li>
+                    <li>תּוּת</li>
+                </ul>
+            </div>
+            <div class="list-box">
+                <h3>📝 רשימת קניות6</h3>
+                <ul>
+                    <li>מִיקְסֵר</li>
+                    <li> חֲלִיפָה</li>
+                    <li>מַצְלֵמָה</li>
+                </ul>
+            </div>
+            <div class="list-box">
+                <h3>📝 רשימת קניות7</h3>
+                <ul>
+                    <li>כּוֹבַע</li>
+                    <li>מַחַק</li>
+                    <li>תַּפּוּחַ</li>
+                </ul>
+            </div>
+            <div class="list-box">
+                <h3>📝 רשימת קניות8</h3>
+                <ul>
+                    <li>רַחְפָן</li>
+                    <li>תַּנוּר</li>
+                    <li>מַהְדֵּק</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- כותרות חנויות -->
+        <!-- <div class="shops">
+    </div> -->
+
+        <!-- חנויות עם פריטים -->
+        <div class="shops-container">
+
+            <!-- פירות וירקות -->
+            <div class="shop">
+                <div class="shop-title">פֵּירוֹת וִירָקוֹת</div>
+
+                <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                <img src="../ASSETS/IMAGES/מלפפון.png" class="item v1" data-name="מלפפון">
+                <img src="../ASSETS/IMAGES/עגבניה.png" class="item v2" data-name="עגבנייה">
+                <img src="../ASSETS/IMAGES/בצל.png" class="item v3" data-name="בצל">
+                <img src="../ASSETS/IMAGES/בננה.PNG" class="item v4" data-name="בננה">
+                <img src="../ASSETS/IMAGES/רימון.png" class="item v5" data-name="רימון">
+                <img src="../ASSETS/IMAGES/תות.png" class="item v6" data-name="תות">
+                <img src="../ASSETS/IMAGES/תפוז.png" class="item v7" data-name="תפוז">
+                <img src="../ASSETS/IMAGES/תפוח.png" class="item v8" data-name="תפוח">
+            </div>
+
+            <!-- בגדים -->
+            <!-- בגדים -->
+            <div class="shop">
+                <div class="shop-title">בְּגָדִים</div>
+
+                <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                <img src="../ASSETS/IMAGES/מכנס.png" class="item c1" data-name="מעיל">
+                <img src="../ASSETS/IMAGES/shirt.png" class="item c2" data-name="מעיל">
+                <img src="../ASSETS/IMAGES/חצאית2.png" class="item c3" data-name="שמלה">
+                <img src="../ASSETS/IMAGES/חחליפה.png" class="item c4" data-name="חליפה">
+                <img src="../ASSETS/IMAGES/כובע.png" class="item c5" data-name="כובע">
+                <img src="../ASSETS/IMAGES/שמלה.png" class="item c6" data-name="שמלה">
+                <img src="../ASSETS/IMAGES/מעיל.png" class="item c7" data-name="מעיל">
+                <img src="../ASSETS/IMAGES/גרב.png" class="item c8" data-name="גרב">
+            </div>
+
+            <!-- צעצועים -->
+            <div class="shop">
+                <div class="shop-title">צַעֲצוּעִים</div>
+
+                <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                <img src="../ASSETS/IMAGES/כדור.png" class="item t1" data-name="כדור">
+                <img src="../ASSETS/IMAGES/פאזל.jpeg" class="item t2" data-name="פאזל">
+                <img src="../ASSETS/IMAGES/מגנטים.png" class="item t3" data-name="מגנטים">
+                <img src="../ASSETS/IMAGES/בובה.png" class="item t4" data-name="בובה">
+                <img src="../ASSETS/IMAGES/אופניים.png" class="item t5" data-name="אופניים">
+                <img src="../ASSETS/IMAGES/רכבת הרים.png" class="item t6" data-name="רכבת">
+                <img src="../ASSETS/IMAGES/מגלשה.png" class="item t7" data-name="מגלשה">
+                <img src="../ASSETS/IMAGES/רחפן.png" class="item t8" data-name="רחפן">
+            </div>
+
+            <!-- מכולת -->
+            <div class="shop">
+                <div class="shop-title">מַכּוֹלֶת</div>
+
+                <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                <img src="../ASSETS/IMAGES/ארטיק.png" class="item g1" data-name="ארטיק">
+                <img src="../ASSETS/IMAGES/ביצים.png" class="item g2" data-name="ביצים">
+                <img src="../ASSETS/IMAGES/מעדן.png" class="item g3" data-name="מעדן">
+                <img src="../ASSETS/IMAGES/פיצה.png" class="item g4" data-name="פיצה">
+                <img src="../ASSETS/IMAGES/כריךpng.png" class="item g5" data-name="כריך">
+                <img src="../ASSETS/IMAGES/שוקו.png" class="item g6" data-name="שוקו">
+                <img src="../ASSETS/IMAGES/לחמניה.png" class="item g7" data-name="לחמניה">
+                <img src="../ASSETS/IMAGES/טבלת שוקולד .png" class="item g8" data-name="שוקולד">
+            </div>
+
+            <!-- כתיבה -->
+            <div class="shop">
+                <div class="shop-title">מַכְשִׁירֵי כְּתִיבָה</div>
+
+                <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                <img src="../ASSETS/IMAGES/מחק.png" class="item s1" data-name="מחק">
+                <img src="../ASSETS/IMAGES/מחשבון.png" class="item s2" data-name="מחשבון">
+                <img src="../ASSETS/IMAGES/עט.png" class="item s3" data-name="עט">
+                <img src="../ASSETS/IMAGES/עפרונות.png" class="item s4" data-name="עפרונות">
+                <img src="../ASSETS/IMAGES/דבק.png" class="item s5" data-name="דבק">
+                <img src="../ASSETS/IMAGES/מהדק.png" class="item s6" data-name="מהדק">
+                <img src="../ASSETS/IMAGES/עיפרון.png" class="item s7" data-name="עיפרון">
+                <img src="../ASSETS/IMAGES/מספריים.png" class="item s8" data-name="מספריים">
+            </div>
+
+            <!-- חשמל -->
+            <div class="shop">
+                <div class="shop-title">מוּצְרֵי חַשְׁמַל</div>
+
+                <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                <img src="../ASSETS/IMAGES/מזגן.png" class="item e1" data-name="מזגן">
+                <img src="../ASSETS/IMAGES/מחבת.png" class="item e2" data-name="מחבת">
+                <img src="../ASSETS/IMAGES/מכונת תפירה.png" class="item e3" data-name="מכונת תפירה">
+                <img src="../ASSETS/IMAGES/מצלמה.png" class="item e4" data-name="מצלמה">
+                <img src="../ASSETS/IMAGES/מקרוגל.png" class="item e5" data-name="מיקרוגל">
+                <img src="../ASSETS/IMAGES/תנור.png" class="item e6" data-name="תנור">
+                <!-- <img src="../ASSETS/IMAGES/מיקסר.png" class="item e7" data-name="מיקסר"> -->
+                <img src="../ASSETS/IMAGES/מיקסר.png" class="item e8" data-name="מיקסר">
+            </div>
+
+        </div>
+
+        <!-- תחתית -->
+        <div class="bottom">
+            <img class="girl" src="../ASSETS/IMAGES/girl.png">
+        </div>
+
+    </div>
+    <script>
+        function goToNextStage() {
+            let stage = parseInt(localStorage.getItem("currentStage"));
+            stage++;
+            if (stage > 3) {
+                window.location.href = "login.html";
+            } else {
+                localStorage.setItem("currentStage", String(stage));
+                window.location.href = "level" + stage + ".html";
+            }
+        }
+
+        // ✅ טוענים את ה-JS מיד — בלי לחכות לאירוע
+        const level = localStorage.getItem("currentLevel");
+        const timerLabel = document.getElementById("timerLabel");
+
+        if (level === "b") {
+            timerLabel.innerText = "זמן שנותר";
+        } else {
+            timerLabel.innerText = "זמן שעבר";
+        }
+        const script = document.createElement("script");
+        script.src = `../SCRIPTS/${level}2.js?v=${Date.now()}`;
+        script.onload = () => console.log("✅ נטען:", script.src);
+        script.onerror = () => console.log("❌ שגיאה:", script.src);
+        document.body.appendChild(script);
+    </script>
+
+<iframe
+  src="music-player.html"
+  style="display:none;"
+></iframe>
+</body>
+
+</html>

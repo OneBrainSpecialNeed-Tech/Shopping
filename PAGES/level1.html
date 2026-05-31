@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שלב א</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../STYLES/level1.css">
+</head>
+
+<body>
+    <a href="rules.html" class="instructions-btn">
+        להוראות המשחק
+      </a>
+    <img src="../ASSETS/IMAGES/logo.png" id="logo">
+
+    <div class="card large">
+
+        <!-- טיימר -->
+        <div class="timer">
+            ⏱ <span id="timerLabel">זמן שעבר</span>:
+            <span id="time">00:00</span>
+        </div>
+
+        <!-- רשימת קניות -->
+        <div class="top-area">
+
+            <h2>📝 רשימת קניות</h2>
+
+            <div class="list">
+
+                <ul class="shopping-list">
+                    <li>מִכְנָסַיִם</li>
+                    <li>פִּלְפֵּל אָדוֹם</li>
+                    <li>פָּאזֶל</li>
+                </ul>
+
+                <ul class="shopping-list">
+                    <li>עַגְבָנִיָּה</li>
+                    <li>חֻלְצָה קְצָרָה</li>
+                    <li>כַּדּוּר</li>
+                </ul>
+
+                <ul class="shopping-list">
+                    <li>מְלָפְפוֹן</li>
+                    <li>עֲפִיפוֹן</li>
+                    <li>חֲצָאִית</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- כותרות חנויות -->
+        <!-- <div class="shops">
+
+
+
+
+
+        </div> -->
+
+        <!-- חנויות -->
+        <div class="shops-container">
+
+            <!-- בגדים -->
+            <div class="shop clothes-shop">
+                <div class="shop-title">בְּגָדִים</div>
+
+                <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                <img src="../ASSETS/IMAGES/מכנס.png" class="item c1" data-name="מכנסיים">
+                <img src="../ASSETS/IMAGES/shirt.png" class="item c2" data-name="חולצה">
+                <img src="../ASSETS/IMAGES/חצאית2.png" class="item c3" data-name="חצאית">
+                <img src="../ASSETS/IMAGES/גרב.png" class="item c4" data-name="גרביים">
+                <img src="../ASSETS/IMAGES/צעיף.png" class="item c5" data-name="צעיף">
+                <img src="../ASSETS/IMAGES/מעיל.png" class="item c6" data-name="מעיל">
+                <img src="../ASSETS/IMAGES/כובע.png" class="item c7" data-name="כובע">
+                <img src="../ASSETS/IMAGES/ארוכה חולצה.png" class="item c8" data-name="חולצה ארוכה">
+                <img src="../ASSETS/IMAGES/חליפה.png" class="item c9" data-name="ז׳קט">
+
+            </div>
+
+            <!-- ירקות -->
+            <div class="shop vegetables-shop">
+                <div class="shop-title">יְרָקוֹת</div>
+                <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                <img src="../ASSETS/IMAGES/דלורית.png" class="item v1" data-name="דלורית">
+                <img src="../ASSETS/IMAGES/פלפל.png" class="item v2" data-name="פלפל">
+                <img src="../ASSETS/IMAGES/תות.png" class="item v3" data-name="תות">
+                <img src="../ASSETS/IMAGES/מלפפון.png" class="item v4" data-name="מלפפון">
+                <img src="../ASSETS/IMAGES/בצל.png" class="item v5" data-name="בצל">
+                <img src="../ASSETS/IMAGES/שום.png" class="item v6" data-name="שום">
+                <img src="../ASSETS/IMAGES/עגבניה.png" class="item v7" data-name="עגבנייה">
+                <img src="../ASSETS/IMAGES/פלפל ירוק.png" class="item v8" data-name="פלפל ירוק">
+
+            </div>
+
+            <!-- צעצועים -->
+            <div class="shop toys-shop">
+                <div class="shop-title">צַעֲצוּעִים</div>
+
+                <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                <img src="../ASSETS/IMAGES/כדור.png" class="item t1" data-name="כדור">
+                <img src="../ASSETS/IMAGES/פאזל.jpeg" class="item t2" data-name="פאזל">
+                <img src="../ASSETS/IMAGES/מכונית.png" class="item t3" data-name="מכונית">
+                <img src="../ASSETS/IMAGES/עפיפון.png" class="item t4" data-name="עפיפון">
+                <img src="../ASSETS/IMAGES/מגלשה.png" class="item t5" data-name="מגלשה">
+                <img src="../ASSETS/IMAGES/בובה.png" class="item t6" data-name="בובה">
+                <img src="../ASSETS/IMAGES/אופניים.png" class="item t7" data-name="אופניים">
+                <img src="../ASSETS/IMAGES/רכבת.jpg" class="item t8" data-name="רכבת">
+
+            </div>
+
+        </div>
+
+        <!-- ילדה -->
+        <div class="bottom">
+            <img class="girl" src="../ASSETS/IMAGES/girl.png" alt="girl">
+        </div>
+
+    </div>
+
+    <!-- ניצחון -->
+    <div id="winScreen" class="win-screen hidden">
+
+        <h1>🎉 כל הכבוד! סיימת שלב א׳ 🎉</h1>
+
+        <p>עוברים לשלב ב׳...</p>
+
+    </div>
+
+
+    <!-- כל ה־HTML של המשחק -->
+    <script>
+        if (!localStorage.getItem("currentLevel")) {
+            localStorage.setItem("currentLevel", "a");
+        }
+        if (!localStorage.getItem("currentStage")) {
+            localStorage.setItem("currentStage", "1");
+        }
+
+        function nextStage() {
+            localStorage.setItem("currentStage", "2");
+            window.location.href = "level2.html";
+        }
+
+        function resetGame() {
+            localStorage.setItem("currentLevel", "a");
+            localStorage.setItem("currentStage", "1");
+            location.reload();
+        }
+
+        const level = localStorage.getItem("currentLevel");
+        const timerLabel = document.getElementById("timerLabel");
+
+        if (level === "b") {
+            timerLabel.innerText = "זמן שנותר";
+        } else {
+            timerLabel.innerText = "זמן שעבר";
+        }
+        const script = document.createElement("script");
+        script.src = `../SCRIPTS/${level}1.js?v=${Date.now()}`;
+        script.onload = () => console.log("✅ נטען:", script.src);
+        document.body.appendChild(script);
+    </script>
+<!-- <iframe
+src="music-player.html"
+style="display:none;"
+></iframe> -->
+</body>
+
+</html>

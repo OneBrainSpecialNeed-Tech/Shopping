@@ -1,0 +1,245 @@
+/* =========================
+   בסיס
+========================= */
+body {
+  margin: 0;
+  font-family: 'Varela Round', sans-serif;
+  background: radial-gradient(circle at top, #1f2a44, #0f172a);
+  color: #fff;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* =========================
+   כותרת ראשית
+========================= */
+h1 {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 22px;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+/* =========================
+   פריסה ראשית
+========================= */
+.layout {
+  display: flex;
+  gap: 12px;
+  width: 95%;
+  height: calc(100vh - 60px);
+  margin: auto;
+}
+
+/* =========================
+   פאנלים (Glass UI)
+========================= */
+.panel,
+.chart-panel {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* שמאל */
+.panel {
+  flex: 2;
+  overflow-y: auto;
+}
+
+/* ימין */
+.chart-panel {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* =========================
+   scrollbar
+========================= */
+.panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.panel::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
+
+/* =========================
+   כותרת גרף
+========================= */
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   קנבס גרף
+========================= */
+canvas {
+  width: 100% !important;
+  height: 170px !important;
+  background: white;
+  border-radius: 12px;
+}
+
+/* =========================
+   רשימות מוסתרות (לא בשימוש כעת)
+========================= */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* =========================
+   🎮 כרטיס שחקן (חדש - אפליקציה)
+========================= */
+.player-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 16px;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.15);
+}
+
+/* עיגול אות */
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* טקסט בכרטיס */
+.info h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.info p {
+  margin: 2px 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* =========================
+   כרטיס משחק
+========================= */
+.game-card {
+  background: rgba(255,255,255,0.07);
+  padding: 12px;
+  border-radius: 14px;
+  margin-top: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: 0.2s;
+}
+
+.game-card:hover {
+  transform: scale(1.01);
+}
+
+/* =========================
+   קלטים
+========================= */
+input {
+  padding: 8px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  width: 180px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+/* =========================
+   כפתורים
+========================= */
+button {
+  padding: 8px 12px;
+  margin: 4px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* =========================
+   לינק דשבורד
+========================= */
+.dashboard-link {
+  text-decoration: none;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+/* =========================
+   כפתור חזרה
+========================= */
+.back-btn {
+  margin-top: 20px;
+  width: 100%;
+  background: linear-gradient(135deg, #444, #222);
+  color: white;
+  padding: 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  transform: scale(1.03);
+  background: linear-gradient(135deg, #555, #333);
+}
+
+/* =========================
+   אנימציית כניסה
+========================= */
+.panel, .chart-panel {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

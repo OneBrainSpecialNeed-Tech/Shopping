@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>בחירת רמה</title>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+  <style>
+
+/* =========================
+   RESET
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Varela Round', sans-serif;}
+
+/* =========================
+   רקע האתר
+========================= */
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+
+  background:linear-gradient(
+    145deg,
+    #ffc94d,
+    #ff4fa3,
+    #9b5cff,
+    #4fb3ff
+  );
+
+  background-size:cover;
+  background-attachment:fixed;
+
+  overflow-x:hidden;
+}
+/* =========================
+   קונטיינר
+========================= */
+.container{
+  width:90%;
+  max-width:1200px;
+  text-align:center;
+  animation:fadeIn 1s ease;
+}
+
+/* =========================
+   כותרות
+========================= */
+.title{
+  color:white;
+  font-size:55px;
+  margin-bottom:15px;
+
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.5),
+    0 0 25px rgba(255,255,255,0.25);
+}
+
+.subtitle{
+  color:white;
+  font-size:20px;
+  margin-bottom:50px;
+  opacity:0.95;
+}
+
+/* =========================
+   לייאאוט כרטיסים
+========================= */
+.levels{
+  display:flex;
+  gap:30px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* =========================
+   כרטיס
+========================= */
+.card{
+  width:300px;
+  min-height:520px;
+  padding:35px 25px;
+
+  border-radius:32px;
+
+  display:flex;
+  flex-direction:column;
+
+  backdrop-filter:blur(14px);
+  background:rgba(255,255,255,0.18);
+
+  border:3px solid rgba(255,255,255,0.45);
+
+  position:relative;
+  overflow:hidden;
+
+  transition:0.4s;
+  cursor:pointer;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.15),
+    0 0 25px rgba(255,255,255,0.22);
+
+  animation:floatCard 4s ease-in-out infinite;
+}
+
+/* מסגרת פנימית */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:32px;
+  padding:2px;
+
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,0.7),
+    rgba(255,255,255,0.2),
+    rgba(255,255,255,0.6)
+  );
+
+  opacity:0.6;
+
+  pointer-events:none;
+}
+
+/* Hover */
+.card:hover{
+  transform:translateY(-12px) scale(1.04);
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.2),
+    0 0 35px rgba(255,255,255,0.35);
+}
+
+/* צבעי רמות */
+.easy{ border-top:8px solid #52e38f; }
+.medium{ border-top:8px solid #ffd93d; }
+.hard{ border-top:8px solid #ff6b8a; }
+
+/* =========================
+   תוכן כרטיס
+========================= */
+.emoji{
+  font-size:70px;
+  margin-bottom:20px;
+  filter:drop-shadow(0 0 10px rgba(255,255,255,0.35));
+}
+
+.level-name{
+  font-size:32px;
+  color:white;
+  margin-bottom:15px;
+  font-weight:bold;
+  text-shadow:0 0 10px rgba(255,255,255,0.35);
+}
+
+.desc{
+  flex:1;
+  color:white;
+  line-height:1.8;
+  font-size:17px;
+  margin-bottom:20px;
+}
+
+/* =========================
+   כפתור
+========================= */
+.btn{
+  position:relative;
+  overflow:hidden;
+
+  margin-top:auto;
+
+  border:none;
+  outline:none;
+
+  padding:15px 38px;
+
+  border-radius:18px;
+
+  color:white;
+  font-size:18px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  background:linear-gradient(
+    135deg,
+    #ff7eb6,
+    #b388ff,
+    #6bb8ff
+  );
+
+  background-size:200% auto;
+
+  transition:0.35s;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.18),
+    0 0 18px rgba(255,255,255,0.25);
+}
+
+/* פס אור */
+.btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:80%;
+  height:100%;
+
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.65),
+    transparent
+  );
+
+  transform:skewX(-25deg);
+  transition:0.8s;
+}
+
+/* Hover */
+.btn:hover{
+  transform:translateY(-4px) scale(1.06);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,0.22),
+    0 0 30px rgba(255,255,255,0.35),
+    0 0 50px rgba(179,136,255,0.45);
+
+  animation:pulseGlow 1.8s infinite;
+}
+
+.btn:hover::before{
+  left:140%;
+}
+
+.btn:active{
+  transform:scale(0.96);
+}
+
+/* =========================
+   אנימציות
+========================= */
+@keyframes fadeIn{
+  from{ opacity:0; transform:translateY(30px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes floatCard{
+  0%{ transform:translateY(0px); }
+  50%{ transform:translateY(-6px); }
+  100%{ transform:translateY(0px); }
+}
+
+@keyframes pulseGlow{
+  0%{ box-shadow:0 0 0 0 rgba(179,136,255,0.5); }
+  70%{ box-shadow:0 0 0 18px rgba(179,136,255,0); }
+  100%{ box-shadow:0 0 0 0 rgba(179,136,255,0); }
+}
+
+/* =========================
+   מובייל
+========================= */
+@media(max-width:950px){
+  body{ padding:30px 0; }
+
+  .levels{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .card{
+    width:90%;
+    max-width:350px;
+    min-height:auto;
+  }
+
+  .title{ font-size:40px; }
+  .subtitle{ font-size:18px; }
+}
+
+/* =========================
+   לוגו
+========================= */
+#logo{
+  position:fixed;
+  bottom:10px;
+  left:10px;
+  width:100px;
+  z-index:1000;
+}
+    
+    </style>
+</head>
+<iframe
+  src="music-player.html"
+  style="display:none;"
+></iframe>
+<body>
+  <img src="../ASSETS/IMAGES/logo.png" id="logo">
+
+  <div class="container">
+
+    <h1 class="title">🎮 בחירת רמה 🎮</h1>
+
+    <p class="subtitle">
+      בחרו את רמת הקושי המתאימה לכם והתחילו במסע הקניות!
+    </p>
+
+    <div class="levels">
+
+      <!-- רמה א -->
+      <div class="card easy">
+
+        <div class="emoji">🥇</div>
+
+        <div class="level-name">רמה א'</div>
+
+        <div class="desc">
+          המשחק הרגיל ללא הגבלת זמן.<br>
+          מתאים למתחילים ולמשחק רגוע ומהנה.
+        </div>
+
+        <button class="btn" onclick="selectLevel('a')">
+          התחל משחק
+        </button>
+        
+       
+
+      </div>
+
+      <!-- רמה ב -->
+      <div class="card medium">
+
+        <div class="emoji">🥈</div>
+
+        <div class="level-name">רמה ב'</div>
+
+        <div class="desc">
+          משחק נגד הזמן ⏱️<br><br>
+
+          שלב א' - 40 שניות<br>
+          שלב ב' - דקה ו- 50 שניות<br>
+          שלב ג' - 30 שניות
+        </div>
+
+        <button class="btn" onclick="selectLevel('b')">
+          התחל משחק
+        </button>
+
+      </div>
+
+      <!-- רמה ג -->
+      <div class="card hard">
+
+        <div class="emoji">🥉</div>
+
+        <div class="level-name">רמה ג'</div>
+
+        <div class="desc">
+          האתגר למקצוענים 🎖️<br><br>
+
+          הילדה עם העגלה מתקדמת לאורך המסך,
+          ועליכם להספיק למלא את העגלה
+          לפני שהיא נעלמת!
+        </div>
+
+        <button class="btn" onclick="selectLevel('c')">
+          התחל משחק
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script>
+    localStorage.setItem("global_bgm", "on");
+   function selectLevel(level) {
+  localStorage.setItem("currentLevel", level);  // 'a', 'b', או 'c'
+  localStorage.setItem("currentStage", "1");     // תמיד מתחילים משלב 1
+  window.location.href = "level1.html";
+}
+    </script>
+<!-- <script src="../SCRIPTS/bgm.js"></script> -->
+<!-- <script>
+  document.addEventListener("click", () => {
+    startBGM();
+  }, { once: true });
+</script> -->
+</body>
+</html>

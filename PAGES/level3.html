@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+     <meta charset="UTF-8">
+     <title>שלב ג'</title>
+     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+     <link rel="stylesheet" href="../STYLES/level3.css">
+</head>
+
+<body>
+     <a href="rules.html" class="instructions-btn">
+          להוראות המשחק
+        </a>
+     <img src="../ASSETS/IMAGES/logo.png" id="logo">
+
+     <div class="card large">
+
+          <!-- טיימר -->
+          <div class="timer">
+               ⏱ <span id="timerLabel">זמן שעבר</span>:
+               <span id="time">00:00</span>
+          </div>
+
+          <!-- =======================
+         🎯 דילמה
+    ======================== -->
+
+          <div class="dilemma-box">
+
+               <div id="speaker">🔊</div>
+
+               <div id="dilemmaText"></div>
+
+          </div>
+
+          <!-- כותרות -->
+          <div class="shops">
+
+
+
+
+
+
+
+          </div>
+
+          <!-- =======================
+         🏪 חנויות
+    ======================== -->
+
+          <div class="shops-container">
+
+               <!-- מכולת -->
+               <div class="shop">
+                    <div class="shop-title">מַכּוֹלֶת</div>
+
+                    <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                    <img src="../ASSETS/IMAGES/טבלת שוקולד .png" class="item g1" data-name="שוקולד" data-shop="מכולת">
+
+                    <img src="../ASSETS/IMAGES/פיתה.png" class="item g2" data-name="פיתה" data-shop="מכולת">
+
+                    <img src="../ASSETS/IMAGES/לחמניה.png" class="item g3" data-name="לחמניה" data-shop="מכולת">
+
+                    <img src="../ASSETS/IMAGES/מעדן.png" class="item g4" data-name="מעדן" data-shop="מכולת">
+
+                    <img src="../ASSETS/IMAGES/ביצים.png" class="item g5" data-name="ביצים" data-shop="מכולת">
+
+                    <img src="../ASSETS/IMAGES/פיצה.png" class="item g6" data-name="פיצה" data-shop="מכולת">
+
+                    <img src="../ASSETS/IMAGES/קמח.png" class="item g7" data-name="קמח" data-shop="מכולת">
+
+                    <img src="../ASSETS/IMAGES/סוכר.png" class="item g8" data-name="סוכר" data-shop="מכולת">
+
+               </div>
+
+
+               <!-- צעצועים -->
+               <div class="shop">
+                    <div class="shop-title">צַעֲצוּעִים</div>
+
+                    <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                    <img src="../ASSETS/IMAGES/כדור.png" class="item t1" data-name="כדור" data-shop="צעצועים">
+
+                    <img src="../ASSETS/IMAGES/פאזל.jpeg" class="item t2" data-name="פאזל" data-shop="צעצועים">
+
+                    <img src="../ASSETS/IMAGES/מגנטים.png" class="item t3" data-name="מגנטים" data-shop="צעצועים">
+
+                    <img src="../ASSETS/IMAGES/בובה.png" class="item t4" data-name="בובה" data-shop="צעצועים">
+
+                    <img src="../ASSETS/IMAGES/אופניים.png" class="item t5" data-name="אופניים" data-shop="צעצועים">
+
+                    <img src="../ASSETS/IMAGES/רכבת הרים.png" class="item t6" data-name="רכבת" data-shop="צעצועים">
+
+                    <img src="../ASSETS/IMAGES/מגלשה.png" class="item t7" data-name="מגלשה" data-shop="צעצועים">
+
+                    <img src="../ASSETS/IMAGES/רחפן.png" class="item t8" data-name="רחפן" data-shop="צעצועים">
+
+               </div>
+
+
+               <!-- מוצרי תינוקות -->
+               <div class="shop">
+                    <div class="shop-title">מוּצְרֵי תִּינוֹקוֹת</div>
+
+                    <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                    <img src="../ASSETS/IMAGES/בקבוק תינוק.png" class="item b1" data-name="בקבוק"
+                         data-shop="מוצרי תינוקות">
+
+                    <img src="../ASSETS/IMAGES/סלקל.png" class="item b2" data-name="סלקל" data-shop="מוצרי תינוקות">
+
+                    <img src="../ASSETS/IMAGES/עגלה.png" class="item b3" data-name="עגלה" data-shop="מוצרי תינוקות">
+
+                    <img src="../ASSETS/IMAGES/עריסה.png" class="item b4" data-name="עריסה" data-shop="מוצרי תינוקות">
+
+                    <img src="../ASSETS/IMAGES/מוצץ.png" class="item b5" data-name="מוצץ" data-shop="מוצרי תינוקות">
+
+                    <img src="../ASSETS/IMAGES/בגדי תינוק  מעולים.png" class="item b6" data-name="בגדי תינוק"
+                         data-shop="מוצרי תינוקות">
+
+                    <img src="../ASSETS/IMAGES/משחקי קרש לתינוק.png" class="item b7" data-name="משחק"
+                         data-shop="מוצרי תינוקות">
+
+                    <img src="../ASSETS/IMAGES/לול לתינוק.png" class="item b8" data-name="לול"
+                         data-shop="מוצרי תינוקות">
+
+               </div>
+
+
+               <!-- פירות וירקות -->
+               <div class="shop">
+                    <div class="shop-title">פֵּירוֹת וִירָקוֹת</div>
+
+                    <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                    <img src="../ASSETS/IMAGES/דלורית.png" class="item v1" data-name="דלורית" data-shop="פירות וירקות">
+
+                    <img src="../ASSETS/IMAGES/שום.png" class="item v2" data-name="שום" data-shop="פירות וירקות">
+
+                    <img src="../ASSETS/IMAGES/בצל.png" class="item v3" data-name="בצל" data-shop="פירות וירקות">
+
+                    <img src="../ASSETS/IMAGES/בננה.PNG" class="item v4" data-name="בננה" data-shop="פירות וירקות">
+
+                    <img src="../ASSETS/IMAGES/רימון.png" class="item v5" data-name="רימון" data-shop="פירות וירקות">
+
+                    <img src="../ASSETS/IMAGES/אננס.png" class="item v6" data-name="אננס" data-shop="פירות וירקות">
+
+                    <img src="../ASSETS/IMAGES/מלפפון.png" class="item v7" data-name="מלפפון" data-shop="פירות וירקות">
+
+                    <img src="../ASSETS/IMAGES/פלפל ירוק.png" class="item v8" data-name="פלפל ירוק"
+                         data-shop="פירות וירקות">
+
+                    <img src="../ASSETS/IMAGES/אגס.png" class="item v9" data-name="אגס" data-shop="פירות וירקות">
+
+
+
+               </div>
+
+
+               <!-- ניקיון -->
+               <div class="shop">
+                    <div class="shop-title">מוּצְרֵי נִקָּיוֹן</div>
+
+                    <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                    <img src="../ASSETS/IMAGES/סמרטוט.png" class="item c1" data-name="סמרטוט" data-shop="מוצרי ניקיון">
+
+                    <img src="../ASSETS/IMAGES/מגבונים.png" class="item c2" data-name="מגבונים"
+                         data-shop="מוצרי ניקיון">
+
+                    <img src="../ASSETS/IMAGES/מבשם אויר.png" class="item c3" data-name="מבשם אויר"
+                         data-shop="מוצרי ניקיון">
+
+                    <img src="../ASSETS/IMAGES/אקנומיקה.png" class="item c4" data-name="אקנומיקה"
+                         data-shop="מוצרי ניקיון">
+
+                    <img src="../ASSETS/IMAGES/ספוג הפלא.png" class="item c5" data-name="ספוג הפלא"
+                         data-shop="מוצרי ניקיון">
+
+                    <img src="../ASSETS/IMAGES/סקוצ.png" class="item c6" data-name="סקוצ" data-shop="מוצרי ניקיון">
+
+                    <img src="../ASSETS/IMAGES/מנקה חלונות.png" class="item c7" data-name="מנקה חלונות"
+                         data-shop="מוצרי ניקיון">
+
+                    <img src="../ASSETS/IMAGES/מנקה רצפות.png" class="item c8" data-name="מנקה רצפות"
+                         data-shop="מוצרי ניקיון">
+
+                    <img src="../ASSETS/IMAGES/מדביר.png" class="item c9" data-name="מדביר" data-shop="מוצרי ניקיון">
+
+               </div>
+
+
+               <!-- תשמישי קדושה -->
+               <div class="shop">
+                    <div class="shop-title">תַּשְׁמִישֵׁי קְדֻשָּׁה</div>
+
+                    <img src="../ASSETS/IMAGES/2686.jpg" class="shop-bg">
+
+                    <img src="../ASSETS/IMAGES/ציצית.png" class="item k1" data-name="ציצית" data-shop="תשמישי קדושה">
+
+                    <img src="../ASSETS/IMAGES/תפילין.png" class="item k2" data-name="תפילין" data-shop="תשמישי קדושה">
+
+                    <img src="../ASSETS/IMAGES/ליל הסדר.png" class="item k3" data-name="ליל הסדר"
+                         data-shop="תשמישי קדושה">
+
+                    <img src="../ASSETS/IMAGES/חנוכיה.png" class="item k4" data-name="חנוכיה" data-shop="תשמישי קדושה">
+
+                    <img src="../ASSETS/IMAGES/שופר.png" class="item k5" data-name="שופר" data-shop="תשמישי קדושה">
+
+                    <img src="../ASSETS/IMAGES/פתילות.png" class="item k6" data-name="פתילות" data-shop="תשמישי קדושה">
+
+                    <img src="../ASSETS/IMAGES/נרות.png" class="item k7" data-name="נרות" data-shop="תשמישי קדושה">
+
+                    <img src="../ASSETS/IMAGES/בקבוק-שמן-זית-1-ליטר.png" class="item k8" data-name="שמן זית"
+                         data-shop="תשמישי קדושה">
+
+
+
+               </div>
+
+          </div>
+
+          <!-- 👧 תחתית -->
+          <div class="bottom">
+
+               <img class="girl" src="../ASSETS/IMAGES/girl.png">
+
+          </div>
+
+     </div>
+
+     <script>
+          function nextStage() {
+               localStorage.removeItem("currentStage");
+               window.location.href = "login.html";
+          }
+
+          function resetGame() {
+               localStorage.setItem("currentLevel", "a");
+               localStorage.setItem("currentStage", "1");
+               window.location.href = "level1.html";
+          }
+
+          const level = localStorage.getItem("currentLevel");
+          const timerLabel = document.getElementById("timerLabel");
+
+          if (level === "b") {
+               timerLabel.innerText = "זמן שנותר";
+          } else {
+               timerLabel.innerText = "זמן שעבר";
+          }
+          const script = document.createElement("script");
+          script.src = `../SCRIPTS/${level}3.js?v=${Date.now()}`;
+          script.onload = () => console.log("✅ נטען:", script.src);
+          document.body.appendChild(script);
+     </script>
+
+<iframe
+  src="music-player.html"
+  style="display:none;"
+></iframe>
+</body>
+
+</html>

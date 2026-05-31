@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>אלוף הקניות 🛒</title>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="STYLES/login.css">
+</head>
+
+<body>
+ 
+  <img src="ASSETS/IMAGES/logo.png" id="logo">
+  <div class="float-items">
+    <span>🛒</span>
+    <span>💳</span>
+    <span>🧃</span>
+    <span>🍞</span>
+    <span>🧀</span>
+    <span>🛍️</span>
+  </div>
+
+  <!-- רקע וידאו -->
+  <!-- <video autoplay muted loop id="bgVideo">
+    <source src="ASSETS/SOUNDS/bgm.mp3" type="video/mp3"> -->
+  </video>
+
+  <!-- אנימציית רקע -->
+  <div class="bg-animation">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- מסך התחברות -->
+  <div class="screen">
+
+    <div class="container">
+
+      <h1>🛒 אלוף הקניות</h1>
+      <p class="subtitle">בוא נתחיל לשחק!</p>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="login">🔑 התחברות</button>
+        <button class="tab" data-tab="register">✨ הרשמה</button>
+        <button type="button" class="tab" id="helpBtn">📖 הוראות המשחק</button>
+      </div>
+
+      <!-- התחברות -->
+      <form id="loginForm" class="panel show">
+        <input type="text" id="loginUsername" placeholder="👤 שם משתמש" required>
+
+        <input type="password" id="loginPassword" placeholder="🔒 סיסמה" required>
+
+        <button type="button" class="big-btn" id="startGameBtn">
+          🚀 התחל משחק 
+        </button>
+        <button type="button" class="big-btn" id="myGamesBtn">
+          🎮 המשחקים שלי
+        </button>
+        <p id="loginMsg"></p>
+      </form>
+
+      <!-- הרשמה -->
+      <form id="registerForm" class="panel">
+
+        <input type="text"
+               id="regUsername"
+               placeholder="👤 שם חדש"
+               required>
+
+        <input type="password"
+               id="regPassword"
+               placeholder="🔒 סיסמה (6+)"
+               required>
+
+        <button type="submit" class="big-btn">
+          🎉 צור משתמש
+        </button>
+
+        <p id="regMsg"></p>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="conveyor"></div>
+
+  <audio id="loginSound">
+    <source src="media/login.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- קובץ JS -->
+  <script src="SCRIPTS/login.js"></script>
+  <script src="SCRIPTS/bgm.js"></script>
+
+ 
+  <!-- קוד נוסף -->
+  <!-- <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      // =========================
+      // הרשמה
+      // =========================
+      const registerForm = document.getElementById("registerForm");
+
+      registerForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const username =
+          document.getElementById("regUsername").value;
+
+        const password =
+          document.getElementById("regPassword").value;
+
+        const msg =
+          document.getElementById("regMsg");
+
+        if (password.length < 6) {
+
+          msg.textContent =
+            "❌ סיסמה חייבת להיות לפחות 6 תווים";
+
+          msg.style.color = "red";
+
+          return;
+        }
+
+        localStorage.setItem("user", JSON.stringify({
+          username,
+          password
+        }));
+
+        msg.textContent =
+          "✅ נרשמת בהצלחה! מעבר להתחברות..";
+
+        msg.style.color = "white";
+
+        setTimeout(() => {
+
+          document
+            .querySelector('[data-tab="login"]')
+            .click();
+
+          document
+            .getElementById("loginUsername")
+            .value = username;
+
+        }, 1000);
+
+      });
+
+      // =========================
+      // הוראות משחק
+      // =========================
+      const helpBtn =
+        document.getElementById("helpBtn");
+
+      if (helpBtn) {
+
+        helpBtn.addEventListener("click", () => {
+
+          window.location.href =
+            "PAGES/rulse.html";
+
+        });
+
+      }
+
+    });
+
+  </script> -->
+  
+</body>
+
+</html>
