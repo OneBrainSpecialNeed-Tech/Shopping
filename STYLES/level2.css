@@ -83,15 +83,15 @@ body::before {
    טיימר
 ======================= */
 .timer {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
     width: 200px;
     background: #ffd54f;
     padding: 8px;
     border-radius: 20px;
-    margin-bottom: 5px;
-    margin-right: auto;
-
-    box-shadow:
-    0 4px 12px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
 /* =======================
@@ -103,6 +103,11 @@ body::before {
     gap: 20px;
     justify-content: center;
     margin-top: 10px;
+    position: fixed;
+    top: 20px; /* שני את המספר הזה עד שהרשימות יהיו בדיוק במקום שהיו */
+    right: 60px;
+    z-index: 9999;
+
 }
 
 .list-box {
@@ -198,14 +203,18 @@ body::before {
 .shops-container {
     display: grid;
     grid-template-columns: repeat(6, 1fr); /* רוחב קבוע לכל חנות */
-    gap: 22px;
+    gap: 10px;
  
 
     justify-content: center; /* ⭐ דוחף הכול לימין */
     
-    margin-top: 10px;
+    /* margin-top: 10px; */
 
-    padding-right: 80px; /* נותן נשימה בצד ימין */
+    padding-right: 10px; /* נותן נשימה בצד ימין */
+    margin-top: 150px;
+    flex-wrap: wrap;
+
+
 }
 
 .shop {
@@ -393,7 +402,7 @@ body::before {
 /* =======================
    📱 טבלאט
 ======================= */
-@media (max-width: 900px) {
+@media (max-width: 800px) {
 
     .shops-container {
         display: flex !important;

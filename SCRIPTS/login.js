@@ -219,6 +219,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (allUsers.find(u => u.username === username)) {
+        console.log("משתמשים קיימים:", allUsers.map(u => u.username));
+        console.log("ניסיון הרשמה:", JSON.stringify(username));
         regMsg.textContent = "❕ כבר קיים משתמש כזה";
         regMsg.style.color = "red";
         return;

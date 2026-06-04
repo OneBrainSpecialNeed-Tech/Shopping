@@ -68,6 +68,11 @@ body::before {
     border-radius: 20px;
     margin-bottom: 5px;
     margin-right: auto;
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    z-index: 9999;
+    margin: 0;
 }
 
 /* ======================= כותרות חנויות ======================= */
@@ -75,7 +80,9 @@ body::before {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     justify-items: center;
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    margin-top: 150px;
+
 }
 
 .shop-title {
@@ -407,6 +414,12 @@ body::before {
     gap: 18px;
     position: relative;
     overflow: hidden;
+    position: fixed;
+    top: 20px;
+    left: 55%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    
 }
 
 /* אפקט זוהר */
@@ -579,15 +592,8 @@ body {
     z-index: 999;
 }
 
-/* ========================= טאבלט ========================= */
+/* ========================= מסכים גדולים ========================= */
 @media (max-width: 1400px) {
-    .cart-stack {
-        right: 45px !important;
-    }
-
-    .cart-stack {
-        bottom: 53px !important;
-    }
 
     .shops {
         grid-template-columns: repeat(3, 1fr);
@@ -596,18 +602,11 @@ body {
 
     .shops-container {
         grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
+        gap: 25px;
     }
 
-    .shop {
-        width: 245px;
-    }
-
-    .bottom {
-        margin-top: 50px;
-        display: flex;
-        justify-content: flex-start;
-        padding-right: 20px;
+    .dilemma-box {
+        width: 88%;
     }
 
     .girl {
@@ -616,106 +615,106 @@ body {
     }
 }
 
-/* ========================= מובייל ========================= */
-@media (max-width: 900px) {
+/* ========================= טאבלט ========================= */
+@media (max-width: 1024px) {
 
-    /* כותרות */
     .shops {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-top: 20px;
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .shop-title {
-        font-size: 22px;
-    }
-
-    /* חנות אחת בשורה */
     .shops-container {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 20px !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .dilemma-box {
+        width: 92%;
+        padding: 14px;
+    }
+
+    #dilemmaText {
+        font-size: 20px;
     }
 
     .shop {
         width: 245px;
-        margin: auto;
+    }
+}
+
+/* ========================= מובייל ========================= */
+@media (max-width: 768px) {
+
+    .shops {
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
 
-    .shop-bg {
-        width: 245px;
-        height: 300px;
+    .shops-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
-    /* דילמה */
     .dilemma-box {
-        width: 96%;
+        width: 95%;
+        padding: 12px;
         flex-direction: column;
-        padding: 16px;
-        gap: 12px;
-        border-radius: 24px;
+        gap: 10px;
     }
 
     #dilemmaText {
         font-size: 18px;
-        line-height: 1.7;
+        line-height: 1.6;
     }
 
     #speaker {
-        min-width: 58px;
-        height: 58px;
+        width: 55px;
+        height: 55px;
+        min-width: 55px;
         font-size: 28px;
     }
 
-    /* טיימר */
     .timer {
-        width: 170px;
-        font-size: 15px;
-    }
-
-    /* הילדה יורדת */
-    .bottom {
-        margin-top: 40px;
-        justify-content: center;
+        width: 150px;
+        font-size: 14px;
     }
 
     .girl {
-        width: 115px;
-        height: 115px;
+        width: 120px;
+        height: 120px;
     }
 
-    /* מסך ניצחון */
-    .win-box {
-        width: 92%;
-        padding: 28px 18px;
-    }
-
-    .win-box h1 {
-        font-size: 42px;
-    }
-
-    .win-box p {
-        font-size: 24px;
+    #logo {
+        width: 70px;
     }
 }
 
 /* ========================= מובייל קטן ========================= */
-@media (max-width: 500px) {
-    .shop {
-        width: 230px;
-    }
+@media (max-width: 480px) {
 
-    .shop-bg {
-        width: 230px;
-        height: 285px;
-    }
-
-    .item {
-        width: 44px;
+    .dilemma-box {
+        width: 98%;
+        border-radius: 20px;
     }
 
     #dilemmaText {
-        font-size: 17px;
+        font-size: 16px;
     }
 
+    .shop {
+        width: 220px;
     }
+
+    .shop-bg {
+        width: 220px;
+        height: 270px;
+    }
+
+    .item {
+        width: 42px;
+    }
+
+    .timer {
+        width: 130px;
+        font-size: 13px;
+    }
+}

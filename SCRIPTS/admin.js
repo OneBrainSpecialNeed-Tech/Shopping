@@ -177,7 +177,7 @@ function openPlayer(username) {
 }
 
 // =======================
-// 🎮 משחקי שחקן
+// 🎮 משחקי שחקן — מקובץ לפי רמות
 // =======================
 
 function loadPlayerGames(username, container) {
@@ -192,59 +192,89 @@ function loadPlayerGames(username, container) {
     return;
   }
 
+  // שם השחקן
   let title = document.createElement("h2");
   title.innerText = `👤 ${username}`;
   container.appendChild(title);
 
+  // שיא כללי
   let best = Math.min(...userGames.map(getTotal));
-
   let record = document.createElement("div");
   record.className = "record-box";
-  record.innerHTML = `🏆 שיא: <b>${best}</b> שניות`;
+  record.innerHTML = `🏆 שיא כללי: <b>${best}</b> שניות`;
   container.appendChild(record);
 
-  userGames.forEach((g, i) => {
-    const s = getStages(g);
-    const total = getTotal(g);
-    const totalMax = getTotalMax(g);
-    const label = levelLabel(g);
-
-    let div = document.createElement("div");
-    div.className = "game-card";
-
-    let levelGroup = getLevelGroup(g);
-    let stagesHTML;
-
-    if (levelGroup === "C") {
-      stagesHTML = `⏱ שלב א׳: <b>${s.stage1}</b> שניות מתוך ${s.stage1Max}<br>
-         ⏱ שלב ב׳: <b>${s.stage2}</b> שניות מתוך ${s.stage2Max}<br>
-         ⏱ שלב ג׳: <b>${s.stage3}</b> שניות מתוך ${s.stage3Max}<hr>
-         🏆 סה״כ: <b>${total}</b> מתוך ${totalMax} שניות<br>
-         ${g.rating || ""} ${g.ratingText || ""}`;
-    } else if (levelGroup === "B") {
-      stagesHTML = `⏱ שלב 1: <b>${s.stage1}</b> שניות מתוך ${s.stage1Max}<br>
-         ⏱ שלב 2: <b>${s.stage2}</b> שניות מתוך ${s.stage2Max}<br>
-         ⏱ שלב 3: <b>${s.stage3}</b> שניות מתוך ${s.stage3Max}<hr>
-         🏆 סה״כ: <b>${total}</b> מתוך ${totalMax} שניות
-         ${g.stars ? `<br>⭐ ${g.stars}` : ""}`;
-    } else {
-      stagesHTML = `⏱ שלב 1: <b>${s.stage1}</b> שניות<br>
-         ⏱ שלב 2: <b>${s.stage2}</b> שניות<br>
-         ⏱ שלב 3: <b>${s.stage3}</b> שניות<hr>
-         🏆 סה״כ: <b>${total}</b> שניות
-         ${g.stars ? `<br>⭐ ${g.stars}` : ""}`;
-    }
-
-    div.innerHTML = `
-      <h3>🎮 משחק ${i + 1} — ${label}</h3>
-      📅 ${g.date} | 🕒 ${g.hour || ""}
-      <hr>
-      ${stagesHTML}
-    `;
-
-    container.appendChild(div);
+  // --- קיבוץ לפי רמות ---
+  const groups = {};
+  userGames.forEach(g => {
+    const group = getLevelGroup(g);
+    if (!groups[group]) groups[group] = [];
+    groups[group].push(g);
   });
 
+  // סדר הרמות: א, ב, ג
+  const groupOrder = ["A", "B", "C"];
+
+  groupOrder.forEach(groupKey => {
+    if (!groups[groupKey]) return;
+
+    const groupGames = groups[groupKey];
+    const label = groupKey === "A" ? "רמה א׳" : groupKey === "B" ? "רמה ב׳" : "רמה ג׳";
+    const bestInGroup = Math.min(...groupGames.map(getTotal));
+
+    // כותרת הרמה
+    let levelHeader = document.createElement("div");
+    levelHeader.className = "level-header";
+    levelHeader.innerHTML = `
+      <h3>📚 ${label}</h3>
+      <span class="level-record">🏆 שיא: <b>${bestInGroup}</b> שניות</span>
+    `;
+    container.appendChild(levelHeader);
+
+    // משחקי הרמה
+    groupGames.forEach((g, i) => {
+      const s = getStages(g);
+      const total = getTotal(g);
+      const totalMax = getTotalMax(g);
+      const levelGroup = getLevelGroup(g);
+
+      let div = document.createElement("div");
+      div.className = "game-card";
+
+      let stagesHTML;
+
+      if (levelGroup === "C") {
+        stagesHTML = `⏱ שלב א׳: <b>${s.stage1}</b> שניות מתוך ${s.stage1Max}<br>
+           ⏱ שלב ב׳: <b>${s.stage2}</b> שניות מתוך ${s.stage2Max}<br>
+           ⏱ שלב ג׳: <b>${s.stage3}</b> שניות מתוך ${s.stage3Max}<hr>
+           🏆 סה״כ: <b>${total}</b> מתוך ${totalMax} שניות<br>
+           ${g.rating || ""} ${g.ratingText || ""}`;
+      } else if (levelGroup === "B") {
+        stagesHTML = `⏱ שלב 1: <b>${s.stage1}</b> שניות מתוך ${s.stage1Max}<br>
+           ⏱ שלב 2: <b>${s.stage2}</b> שניות מתוך ${s.stage2Max}<br>
+           ⏱ שלב 3: <b>${s.stage3}</b> שניות מתוך ${s.stage3Max}<hr>
+           🏆 סה״כ: <b>${total}</b> מתוך ${totalMax} שניות
+           ${g.stars ? `<br>⭐ ${g.stars}` : ""}`;
+      } else {
+        stagesHTML = `⏱ שלב 1: <b>${s.stage1}</b> שניות<br>
+           ⏱ שלב 2: <b>${s.stage2}</b> שניות<br>
+           ⏱ שלב 3: <b>${s.stage3}</b> שניות<hr>
+           🏆 סה״כ: <b>${total}</b> שניות
+           ${g.stars ? `<br>⭐ ${g.stars}` : ""}`;
+      }
+
+      div.innerHTML = `
+        <h3>🎮 משחק ${i + 1}</h3>
+        📅 ${g.date} | 🕒 ${g.hour || ""}
+        <hr>
+        ${stagesHTML}
+      `;
+
+      container.appendChild(div);
+    });
+  });
+
+  // כפתור חזרה
   let backBtn = document.createElement("button");
   backBtn.className = "back-btn";
   backBtn.innerText = "🔙 חזור";

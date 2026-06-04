@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>הוראות משחק</title>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      font-family: 'Varela Round', sans-serif;
+
+      background: linear-gradient(135deg, #ffb6f9, #b388ff, #8ec5ff);
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup {
+      width: 750px;
+      max-height: 88vh;
+      overflow-y: auto;
+
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 30px;
+      padding: 35px 45px;
+
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25),
+        0 0 25px rgba(255, 255, 255, 0.4);
+
+      border: 5px solid white;
+      position: relative;
+
+      backdrop-filter: blur(6px);
+    }
+
+    /* כפתור X */
+    .close {
+      position: absolute;
+      top: 15px;
+      left: 18px;
+
+      width: 42px;
+      height: 42px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: #ff4d88;
+      color: white;
+
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* כותרות */
+    .popup h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .popup h3 {
+      font-size: 23px;
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }
+
+    /* טקסט */
+    .popup p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #333;
+      margin: 6px 0;
+    }
+
+    /* רשימות */
+    .popup ul {
+      padding-right: 18px;
+      margin-top: 5px;
+    }
+
+    .popup li {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #444;
+      margin-bottom: 4px;
+    }
+
+    /* הפרדה */
+    hr {
+      border: none;
+      height: 3px;
+      background: linear-gradient(to left, #ff4d88, #b388ff);
+      border-radius: 20px;
+      margin: 20px 0;
+    }
+
+    /* גלילה */
+    .popup::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .popup::-webkit-scrollbar-thumb {
+      background: #c97fff;
+      border-radius: 20px;
+    }
+
+    .popup::-webkit-scrollbar-track {
+      background: #f2e6ff;
+      border-radius: 20px;
+    }
+
+    .game-name {
+      text-align: center;
+      font-size: 22px;
+      margin-top: 10px;
+      color: #8b2bbf;
+    }
+    #logo {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+    width: 100px;
+    height: auto;
+}
+  </style>
+</head>
+
+<body>
+  <img src="../ASSETS/IMAGES/logo.png" id="logo">
+
+  <div class="popup">
+
+    <button class="close" onclick="goBack()">✖</button>
+
+    <h2> ברוכים הבאים למשחק "אלוף הקניות" 🛍️</h2>
+
+    <p>
+      היכונו לחוויית קניות מאתגרת, מהנה ומלאת משימות!
+      במהלך המשחק תעברו בין חנויות שונות, תאספו מוצרים לעגלה ותנסו להשלים כל שלב בצורה הטובה והמהירה ביותר.
+    </p>
+
+    <hr>
+
+    <h3>🟢 שלב א'</h3>
+
+    <p>
+      בשלב הראשון תופיע על המסך רשימת קניות המכילה <strong>9 מוצרים</strong>
+      וכן <strong>3 חנויות שונות</strong>.
+    </p>
+
+    <p>
+      על השחקן לעבור לפי סדר הרשימה, לבחור את המוצרים המתאימים.
+    </p>
+
+    <p>
+      בכל הצלחה המוצר יתווסף לעגלה 🛒
+      ולאחר השלמת כל הרשימה – העגלה תזוז והשחקן יעבור אוטומטית לשלב הבא.
+    </p>
+
+    <hr>
+
+    <h3>🟡 שלב ב'</h3>
+
+    <p>זהו שלב מתקדם ומאתגר יותר!</p>
+
+    <p>
+      בשלב זה יופיעו <strong>8 רשימות שונות</strong>,
+      כאשר בכל רשימה יש <strong>3 מוצרים</strong>.
+    </p>
+
+    <p>
+      בנוסף, על המסך יוצגו <strong>6 חנויות שונות</strong>.
+    </p>
+
+    <p>
+      על השחקן לעבור רשימה אחר רשימה, לבחור נכון את המוצרים
+      ולמלא את העגלה בהתאם למשימה.
+    </p>
+
+    <p>
+      לאחר השלמת כל הרשימות ומילוי העגלה בהצלחה –
+      השחקן יעבור לשלב האחרון והמסכם.
+    </p>
+
+    <hr>
+
+    <h3>🔴 שלב ג' – שלב הגמר</h3>
+
+    <p>
+      השלב האחרון והמותח ביותר במשחק!
+    </p>
+
+    <p>
+      בשלב זה תעמוד בפני השחקן דילמה מיוחדת 🧠
+      וכן יוצגו על המסך <strong>6 חנויות</strong>.
+    </p>
+
+    <p>
+      על השחקן לחשוב היטב, לבחור נכון ולבצע את המשימה בהתאם להוראות.
+    </p>
+
+    <hr>
+
+    <h2>✨ בהצלחה רבה! ✨</h2>
+    <p style="text-align:center; font-weight:bold; font-size:18px;">
+      אנחנו מאחלים לכם הנאה, הצלחה והמון כיף במשחק
+    </p>
+
+    <h2 class="game-name">🛒 אלוף הקניות 🛒</h2>
+
+  </div>
+
+  <script>
+    function goBack() {
+      window.location.href = "../login.html";
+    }
+  </script>
+
+</body>
+
+</html>
