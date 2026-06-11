@@ -7,6 +7,7 @@
     box-sizing: border-box;
     font-family: 'Varela Round', sans-serif;
 }
+
 .instructions-btn {
     position: fixed;
     top: 70px;
@@ -93,14 +94,13 @@ body::after {
 .timer {
     position: fixed;
     top: 20px;
+    left: 20px;
     z-index: 9999;
     width: 200px;
     background: linear-gradient(145deg, #ffe082, #ffd54f);
     padding: 8px;
     border-radius: 20px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-    right: auto;
-    left: 20px;
 }
 
 /* =======================
@@ -120,6 +120,9 @@ h2 {
     top: 55px;
     right: 20px;
     z-index: 9999;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
 }
 
 .shopping-list {
@@ -128,7 +131,7 @@ h2 {
     display: inline-block;
     list-style-position: inside;
     padding-right: 10px;
-    margin: 0 25px;
+    margin: 0 10px;
 }
 
 .shopping-list li {
@@ -138,14 +141,35 @@ h2 {
 }
 
 /* =======================
-   חנויות
+   חנויות קונטיינר
+   — flex בלבד, ללא grid
 ======================= */
-.shops {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-    margin-top: -10px;
-    margin-bottom: 5px;
+.shops-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 60px 20px;
+    margin-top: 140px;
+    margin-bottom: 80px;
+    padding: 0 60px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+/* =======================
+   חנות
+======================= */
+.shop {
+    position: relative;
+    width: 435px;            /* תואם ל-shop-bg כדי ש-gap יעבוד נכון */
+    flex-shrink: 0;
+    transition: 0.35s ease;
+}
+
+.shop:hover {
+    transform: translateY(-8px) scale(1.02);
 }
 
 .shop-title {
@@ -158,38 +182,10 @@ h2 {
     margin-bottom: 8px;
 }
 
-/* =======================
-   חנויות קונטיינר
-======================= */
-.shops-container {
-    display: flex;
-    justify-content: center;
-    gap: 120px;
-    margin-left: 40px;
-    margin-top: 110px;
-    position: relative;
-    z-index: 1;
-    flex-wrap: wrap;
-
-}
-
-/* =======================
-   חנות
-======================= */
-.shop {
-    position: relative;
-    width: 350px;
-    transition: 0.35s ease;
-}
-
-.shop:hover {
-    transform: translateY(-8px) scale(1.02);
-}
-
 .shop-bg {
     width: 435px;
     height: 350px;
-    margin: 10px auto;
+    display: block;
     border-radius: 26px;
     box-shadow:
         0 12px 30px rgba(0, 0, 0, 0.16),
@@ -230,35 +226,35 @@ h2 {
 }
 
 /* בגדים */
-.clothes-shop .c1 { bottom: 200px; left: -80px; }
-.clothes-shop .c2 { bottom: 90px; left: -80px; }
-.clothes-shop .c3 { bottom: 160px; left: 200px; }
-.clothes-shop .c4 { bottom: 150px; left: -80px; }
-.clothes-shop .c5 { bottom: 100px; left: 300px; }
-.clothes-shop .c6 { bottom: 110px; left: 20px; }
-.clothes-shop .c7 { bottom: 95px; left: 300px; }
-.clothes-shop .c8 { bottom: 195px; left: 300px; }
-.clothes-shop .c9 { bottom: 170px; left: 20px; }
+.clothes-shop .c1 { bottom: 200px; left: 5px; }
+.clothes-shop .c2 { bottom: 90px;  left: 5px; }
+.clothes-shop .c3 { bottom: 160px; left: 285px; }
+.clothes-shop .c4 { bottom: 150px; left: 5px; }
+.clothes-shop .c5 { bottom: 100px; left: 385px; }
+.clothes-shop .c6 { bottom: 110px; left: 105px; }
+.clothes-shop .c7 { bottom: 95px;  left: 385px; }
+.clothes-shop .c8 { bottom: 195px; left: 385px; }
+.clothes-shop .c9 { bottom: 170px; left: 105px; }
 
 /* ירקות */
-.vegetables-shop .v1 { bottom: 200px; left: -80px; }
-.vegetables-shop .v2 { bottom: 90px; left: -80px; }
-.vegetables-shop .v3 { bottom: 160px; left: 200px; }
-.vegetables-shop .v4 { bottom: 150px; left: -80px; }
-.vegetables-shop .v5 { bottom: 150px; left: 300px; }
-.vegetables-shop .v6 { bottom: 115px; left: 20px; }
-.vegetables-shop .v7 { bottom: 95px; left: 300px; }
-.vegetables-shop .v8 { bottom: 203px; left: 300px; }
+.vegetables-shop .v1 { bottom: 200px; left: 5px; }
+.vegetables-shop .v2 { bottom: 90px;  left: 5px; }
+.vegetables-shop .v3 { bottom: 160px; left: 285px; }
+.vegetables-shop .v4 { bottom: 150px; left: 5px; }
+.vegetables-shop .v5 { bottom: 150px; left: 385px; }
+.vegetables-shop .v6 { bottom: 115px; left: 105px; }
+.vegetables-shop .v7 { bottom: 95px;  left: 385px; }
+.vegetables-shop .v8 { bottom: 203px; left: 385px; }
 
 /* צעצועים */
-.toys-shop .t1 { bottom: 200px; left: -80px; }
-.toys-shop .t2 { bottom: 90px; left: -80px; }
-.toys-shop .t3 { bottom: 160px; left: 200px; }
-.toys-shop .t4 { bottom: 150px; left: -80px; }
-.toys-shop .t5 { bottom: 150px; left: 300px; }
-.toys-shop .t6 { bottom: 105px; left: 20px; }
-.toys-shop .t7 { bottom: 95px; left: 300px; }
-.toys-shop .t8 { bottom: 203px; left: 300px; }
+.toys-shop .t1 { bottom: 200px; left: 5px; }
+.toys-shop .t2 { bottom: 90px;  left: 5px; }
+.toys-shop .t3 { bottom: 160px; left: 285px; }
+.toys-shop .t4 { bottom: 150px; left: 5px; }
+.toys-shop .t5 { bottom: 150px; left: 385px; }
+.toys-shop .t6 { bottom: 105px; left: 105px; }
+.toys-shop .t7 { bottom: 95px;  left: 385px; }
+.toys-shop .t8 { bottom: 203px; left: 385px; }
 
 /* =======================
    ילדה
@@ -268,14 +264,12 @@ h2 {
     bottom: 10px;
     right: 20px;
     z-index: 5000;
-    display: flex;
-    justify-content: right;
+    pointer-events: none;
 }
 
 .girl {
     width: 200px;
     height: 200px;
-    z-index: 5;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.18));
 }
 
@@ -323,64 +317,90 @@ h2 {
    רספונסיביות
 ======================= */
 
-/* טאבלט */
-@media (max-width: 800px) {
+/* 3 חנויות: shop-bg=435px × 3 + gap × 2 = ~1500px */
+@media (max-width: 1500px) {
     .shops-container {
-        gap: 60px;
-        flex-wrap: wrap;
+        gap: 60px 20px;
+        padding: 0 20px;
     }
     .shop {
-        transform: scale(0.92);
-        transform-origin: top center;
+        zoom: 0.9;
     }
-    .bottom {
-        right: 10px;
-        bottom: 80px;
-        transform: translateY(40%);
+    .girl {
+        width: 170px;
+        height: 170px;
+    }
+}
 
+@media (max-width: 1400px) {
+    .shops-container {
+        gap: 60px 20px;
+    }
+    .shop {
+        zoom: 0.75;
+    }
+    .girl {
+        width: 150px;
+        height: 150px;
     }
 }
 
 /* מובייל */
-@media (max-width: 400px) {
-    .shops-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-        margin-top: 280px;
+@media (max-width: 500px) {
+    .timer {
+        top: 10px;
+        left: 10px;
+        width: 150px;
+        font-size: 13px;
+        padding: 6px;
     }
+
+    h2 {
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+    }
+
+    .list {
+        top: 40px;
+        right: 10px;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .shopping-list {
+        margin: 0 5px;
+    }
+
+    .shopping-list li {
+        font-size: 12px;
+    }
+
+    .instructions-btn {
+        top: 130px;
+        left: 10px;
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .shops-container {
+        margin-top: 250px;
+        margin-bottom: 120px;
+        gap: 20px;
+    }
+
     .shop {
-        transform: scale(0.78);
+        transform: scale(0.72);
         transform-origin: top center;
     }
-    .shops {
-        grid-template-columns: 1fr;
-    }
-    .shopping-list {
-        display: block;
-        margin: 8px auto;
-    }
-    .timer {
-        right: 20px;
-        top: 150px;
-    }
-    .list {
-        top: 180px;
-    }
-    h2 {
-        top: 150px;
-        right: 220px;
-    }
+
     .bottom {
-        position: fixed;
-        bottom: 20px;
+        bottom: 5px;
         right: 5px;
-        transform: scale(0.8);
-        z-index: 5000;
-        pointer-events: none;
     }
+
     .girl {
-        width: 140px;
-        height: 140px;
+        width: 100px;
+        height: 100px;
     }
 }

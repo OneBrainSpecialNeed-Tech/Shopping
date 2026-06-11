@@ -5,8 +5,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-font-family: 'Varela Round', sans-serif;}
+    font-family: 'Varela Round', sans-serif;
+}
 
+/* =======================
+   רקע
+======================= */
 body {
     direction: rtl;
     min-height: 100vh;
@@ -15,20 +19,32 @@ body {
     align-items: flex-start;
     overflow-x: hidden;
     overflow-y: auto;
-
-    /* 🌈 רקע מקצועי */
-    background: linear-gradient(
-        145deg,
-        #fff0b3,
-        #ff8fc9,
-        #c09bff,
-        #9fd6ff
-      );
-      
-      background-size: cover;
-      background-attachment: fixed;
+    background: linear-gradient(145deg, #fff0b3, #ff8fc9, #c09bff, #9fd6ff);
+    background-size: cover;
+    background-attachment: fixed;
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(10px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* =======================
+   כרטיס ראשי
+======================= */
+.card {
+    width: 100%;
+    padding: 10px;
+}
+
+/* =======================
+   כפתור הוראות
+======================= */
 .instructions-btn {
     position: fixed;
     top: 70px;
@@ -44,39 +60,24 @@ body {
     transition: all 0.3s ease;
     z-index: 9999;
     border: 1px solid rgba(237, 129, 129, 0.1);
-  }
-  
-  .instructions-btn:hover {
+}
+
+.instructions-btn:hover {
     transform: scale(1.05);
     background: linear-gradient(135deg, #86b1ee, #475569);
     box-shadow: 0 12px 30px rgba(58, 193, 198, 0.45);
-  }
-
-/* שכבת glow */
-body::before {
-
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    background:
-    rgba(255,255,255,0.28);
-
-    backdrop-filter: blur(10px);
-
-    pointer-events: none;
-
-    z-index: -1;
 }
 
 /* =======================
-   כרטיס ראשי
+   לוגו
 ======================= */
-.card {
-    width: 100%;
-    padding: 10px;
+#logo {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+    width: 100px;
+    height: auto;
 }
 
 /* =======================
@@ -91,67 +92,51 @@ body::before {
     background: #ffd54f;
     padding: 8px;
     border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 /* =======================
    רשימות קניות
 ======================= */
 .all-lists {
-    display: grid;
-    grid-template-columns: repeat(8, 130px);
-    gap: 20px;
-    justify-content: center;
-    margin-top: 10px;
     position: fixed;
-    top: 20px; /* שני את המספר הזה עד שהרשימות יהיו בדיוק במקום שהיו */
+    top: 20px;
     right: 60px;
     z-index: 9999;
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: calc(100vw - 240px);
+    justify-content: flex-end;
 }
 
 .list-box {
-
-    background:
-    linear-gradient(
-    145deg,
-    rgba(255,255,255,0.92),
-    rgba(255,255,255,0.75)
-    );
-
+    background: linear-gradient(145deg, rgba(255,255,255,0.92), rgba(255,255,255,0.75));
     border-radius: 18px;
-
     padding: 12px;
-
     text-align: center;
-
     backdrop-filter: blur(10px);
-
-    border: 1px solid rgba(255,255,255,0.45);
-
-    box-shadow:
-    0 8px 20px rgba(0,0,0,0.08);
-
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     transition: 0.35s;
+    min-width: 110px;
 }
 
 .list-box:hover {
-
-    transform:
-    translateY(-8px)
-    scale(1.05);
-
-    box-shadow:
-    0 14px 28px rgba(0,0,0,0.16);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
 }
 
 .list-box h3 {
     font-size: 13px;
+    margin-bottom: 6px;
 }
 
 .list-box ul {
     list-style: disc;
     padding-right: 20px;
+    text-align: right;
 }
 
 .list-box li {
@@ -166,27 +151,8 @@ body::before {
 }
 
 /* =======================
-   כותרות חנויות
+   כותרת חנות
 ======================= */
-.shops {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    justify-items: center;
-    margin-top: 25px;
-}
-
-/* .shop-title {
-
-    font-size: 20px;
-
-    font-weight: bold;
-
-    color: #5c3d2e;
-
-    text-shadow:
-    0 2px 6px rgba(255,255,255,0.8);
-} */
- 
 .shop-title {
     font-weight: bold;
     font-size: 20px;
@@ -198,50 +164,43 @@ body::before {
 }
 
 /* =======================
-   חנויות
+   חנויות קונטיינר
+   — מעל 1510px: שורה אחת, ללא wrap
+   — מתחת 1510px: wrap
 ======================= */
 .shops-container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr); /* רוחב קבוע לכל חנות */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
     gap: 10px;
- 
-
-    justify-content: center; /* ⭐ דוחף הכול לימין */
-    
-    /* margin-top: 10px; */
-
-    padding-right: 10px; /* נותן נשימה בצד ימין */
-    margin-top: 150px;
-    flex-wrap: wrap;
-
-
+    margin-top: 160px;
+    margin-bottom: 220px;
+    padding: 0 10px;
+    width: 100%;
 }
 
+/* =======================
+   חנות
+======================= */
 .shop {
     position: relative;
     width: 245px;
-
+    flex-shrink: 0;
     transition: 0.3s;
 }
 
 .shop:hover {
-
-    transform:
-    translateY(-6px);
+    transform: translateY(-6px);
 }
 
 .shop-bg {
-
     width: 245px;
     height: 300px;
-
+    display: block;
     border-radius: 22px;
-
-    box-shadow:
-    0 10px 22px rgba(0,0,0,0.16);
-
-    border:
-    2px solid rgba(255,255,255,0.5);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 /* =======================
@@ -253,209 +212,131 @@ body::before {
     cursor: pointer;
     transition: 0.3s;
     z-index: 2;
-
-    filter:
-    drop-shadow(1px 2px 4px rgba(0,0,0,0.3));
+    filter: drop-shadow(1px 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .item:hover {
-
-    transform:
-    scale(1.2)
-    rotate(2deg);
+    transform: scale(1.2) rotate(2deg);
 }
-#logo {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    z-index: 1000;
-    width: 100px;
-    height: auto;
-}
-
 
 /* ירקות */
 .v1 { bottom: 120px; left: 2px; }
-.v2 { bottom: 70px; left: 2px; }
+.v2 { bottom: 70px;  left: 2px; }
 .v3 { bottom: 170px; left: 2px; }
-.v4 { bottom: 75px; left: 205px; }
+.v4 { bottom: 75px;  left: 205px; }
 .v5 { bottom: 165px; left: 205px; }
 .v6 { bottom: 120px; left: 205px; }
-.v7 { bottom: 95px; left: 150px; }
+.v7 { bottom: 95px;  left: 150px; }
 .v8 { bottom: 215px; left: 205px; }
 
 /* בגדים */
 .c1 { bottom: 100px; left: 2px; }
-.c2 { bottom: 55px; left: 2px; }
+.c2 { bottom: 55px;  left: 2px; }
 .c3 { bottom: 185px; left: 2px; }
-.c4 { bottom: 70px; left: 200px; }
+.c4 { bottom: 70px;  left: 200px; }
 .c5 { bottom: 165px; left: 205px; }
 .c6 { bottom: 130px; left: 150px; }
-.c7 { bottom: 85px; left: 150px; }
+.c7 { bottom: 85px;  left: 150px; }
 .c8 { bottom: 215px; left: 205px; }
 
 /* צעצועים */
 .t1 { bottom: 120px; left: 2px; }
-.t2 { bottom: 70px; left: 2px; }
+.t2 { bottom: 70px;  left: 2px; }
 .t3 { bottom: 170px; left: 2px; }
-.t4 { bottom: 55px; left: 205px; }
+.t4 { bottom: 55px;  left: 205px; }
 .t5 { bottom: 165px; left: 205px; }
 .t6 { bottom: 120px; left: 210px; }
-.t7 { bottom: 95px; left: 150px; }
+.t7 { bottom: 95px;  left: 150px; }
 .t8 { bottom: 215px; left: 205px; }
 
 /* מכולת */
 .g1 { bottom: 100px; left: 2px; }
-.g2 { bottom: 80px; left: 2px; }
+.g2 { bottom: 80px;  left: 2px; }
 .g3 { bottom: 165px; left: 2px; }
-.g4 { bottom: 65px; left: 200px; }
+.g4 { bottom: 65px;  left: 200px; }
 .g5 { bottom: 165px; left: 205px; }
 .g6 { bottom: 130px; left: 150px; }
-.g7 { bottom: 95px; left: 150px; }
+.g7 { bottom: 95px;  left: 150px; }
 .g8 { bottom: 215px; left: 205px; }
 
 /* כתיבה */
 .s1 { bottom: 120px; left: 2px; }
-.s2 { bottom: 70px; left: 2px; }
+.s2 { bottom: 70px;  left: 2px; }
 .s3 { bottom: 170px; left: 2px; }
-.s4 { bottom: 55px; left: 205px; }
+.s4 { bottom: 55px;  left: 205px; }
 .s5 { bottom: 165px; left: 205px; }
 .s6 { bottom: 120px; left: 210px; }
-.s7 { bottom: 95px; left: 150px; }
+.s7 { bottom: 95px;  left: 150px; }
 .s8 { bottom: 200px; left: 205px; }
 
 /* חשמל */
 .e1 { bottom: 120px; left: 2px; }
-.e2 { bottom: 70px; left: 2px; }
+.e2 { bottom: 70px;  left: 2px; }
 .e3 { bottom: 170px; left: 2px; }
-.e4 { bottom: 70px; left: 205px; }
+.e4 { bottom: 70px;  left: 205px; }
 .e5 { bottom: 165px; left: 200px; }
 .e6 { bottom: 120px; left: 200px; }
-.e7 { bottom: 95px; left: 150px; }
+.e7 { bottom: 95px;  left: 150px; }
 .e8 { bottom: 215px; left: 205px; }
 
 /* =======================
-   תחתית
+   ילדה — קבועה
 ======================= */
 .bottom {
-    margin-top: 10px;
-    display: flex;
-    justify-content: flex-start;
-    position: relative;
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    z-index: 5000;
+    pointer-events: none;
 }
 
 .girl {
     width: 200px;
     height: 200px;
-    position: relative;
-    z-index: 2;
-
-    filter:
-    drop-shadow(0 8px 18px rgba(0,0,0,0.18));
-}
-
-/* עגלה */
-.cart-stack {
-    position: absolute;
-    bottom: 64px;
-    right: 115px;
-    width: 90px;
-    height: 90px;
-    z-index: 1;
-    pointer-events: none;
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.18));
 }
 
 /* =======================
-   📱 מחשב נייד
+   רספונסיביות
 ======================= */
-@media (max-width: 1400px) {
 
+/* מתחת 1510px — wrap מופעל, ללא הקטנה */
+@media (max-width: 1510px) {
     .shops-container {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        
-    }
-
-    .all-lists {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .shop {
-        transform: scale(0.9);
-        transform-origin: top center;
-    }
-
-    .bottom {
-        position: relative;
-        display: flex;
-        justify-content: right;
-        margin-top: 40px;
-        width: 100%;
-    }
-
-    .cart-stack {
-        right: 125px;
-        bottom: 58px;
+        flex-wrap: wrap;
     }
 }
 
-/* =======================
-   📱 טבלאט
-======================= */
 @media (max-width: 800px) {
-
     .shops-container {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        width: 850px !important;
-        gap: 120px !important;
-        padding-right: 0 !important;
-        margin-top: 20px !important;
-        /* ✅ מבטל את ה-grid של טאבלט */
-        grid-template-columns: unset !important;
+        margin-top: 20px;
+        gap: 8px;
     }
-
-    .shop {
-        position: relative !important;
-        width:100% !important;
-        margin: 0 auto !important;
-        transform: none !important;
-    }
-
-    .shop-bg {
-        width: 320px !important;
-        height: 260px !important;
-    }
-
     .all-lists {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .bottom {
-        position: fixed;
-        bottom: 80px;
+        top: 10px;
         right: 10px;
-        z-index: 9999;
+        max-width: calc(100vw - 180px);
+        gap: 6px;
     }
-
+    .list-box {
+        min-width: 90px;
+        padding: 8px;
+    }
+    .list-box h3 { font-size: 11px; }
+    .list-box li  { font-size: 12px; }
     .girl {
-        width: 130px;
-        height: 130px;
-    }
-
-    .cart-stack {
-        bottom: 55px;
-        right: 80px;
-        width: 70px;
-        height: 70px;
+        width: 150px;
+        height: 150px;
     }
 }
 
-/* מובייל */
-@media (max-width:400px){
-
-
+@media (max-width: 500px) {
+    .girl {
+        width: 120px;
+        height: 120px;
+    }
+    .bottom {
+        bottom: 5px;
+        right: 5px;
+    }
 }
-
-    

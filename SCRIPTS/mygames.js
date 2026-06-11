@@ -123,45 +123,73 @@ function loadMyGames() {
     </div>
   `;
 
-  myGames.forEach((g, i) => {
-    const s = getStages(g);
-    const total = getTotal(g);
-    const totalMax = getTotalMax(g);
+  // --- קיבוץ לפי רמות (זהה לדף המנהל) ---
+  const groups = {};
+  myGames.forEach(g => {
+    const group = getLevelGroup(g);
+    if (!groups[group]) groups[group] = [];
+    groups[group].push(g);
+  });
 
-    let levelGroup = getLevelGroup(g);
-    let stagesHTML;
+  const groupOrder = ["A", "B", "C"];
 
-    if (levelGroup === "C") {
-      stagesHTML = `⏱ שלב א׳: <b>${s.stage1}</b> שניות מתוך ${s.stage1Max}<br>
-         ⏱ שלב ב׳: <b>${s.stage2}</b> שניות מתוך ${s.stage2Max}<br>
-         ⏱ שלב ג׳: <b>${s.stage3}</b> שניות מתוך ${s.stage3Max}<hr>
-         🏆 סה״כ: <b>${total}</b> מתוך ${totalMax} שניות<br>
-         ${g.rating || ""} ${g.ratingText || ""}`;
-    } else if (levelGroup === "B") {
-      stagesHTML = `⏱ שלב 1: <b>${s.stage1}</b> שניות מתוך ${s.stage1Max}<br>
-         ⏱ שלב 2: <b>${s.stage2}</b> שניות מתוך ${s.stage2Max}<br>
-         ⏱ שלב 3: <b>${s.stage3}</b> שניות מתוך ${s.stage3Max}<hr>
-         🏆 סה״כ: <b>${total}</b> מתוך ${totalMax} שניות
-         ${g.stars ? `<br>⭐ ${g.stars}` : ""}`;
-    } else {
-      stagesHTML = `⏱ שלב 1: <b>${s.stage1}</b> שניות<br>
-         ⏱ שלב 2: <b>${s.stage2}</b> שניות<br>
-         ⏱ שלב 3: <b>${s.stage3}</b> שניות<hr>
-         🏆 סה״כ: <b>${total}</b> שניות
-         ${g.stars ? `<br>⭐ ${g.stars}` : ""}`;
-    }
+  groupOrder.forEach(groupKey => {
+    if (!groups[groupKey]) return;
 
-    let div = document.createElement("div");
-    div.className = "game-card";
+    const groupGames = groups[groupKey];
+    const label = groupKey === "A" ? "רמה א׳" : groupKey === "B" ? "רמה ב׳" : "רמה ג׳";
+    const bestInGroup = Math.min(...groupGames.map(getTotal));
 
-    div.innerHTML = `
-      <h3>🎮 משחק ${i + 1} — ${levelLabel(g)}</h3>
-      📅 ${g.date || ""} 🕒 ${g.hour || ""}
-      <hr>
-      ${stagesHTML}
+    // כותרת הרמה
+    let levelHeader = document.createElement("div");
+    levelHeader.className = "level-header";
+    levelHeader.innerHTML = `
+      <h3>📚 ${label}</h3>
+      <span class="level-record">🏆 שיא: <b>${bestInGroup}</b> שניות</span>
     `;
+    container.appendChild(levelHeader);
 
-    container.appendChild(div);
+    // משחקי הרמה
+    groupGames.forEach((g, i) => {
+      const s = getStages(g);
+      const total = getTotal(g);
+      const totalMax = getTotalMax(g);
+      const levelGroup = getLevelGroup(g);
+
+      let stagesHTML;
+
+      if (levelGroup === "C") {
+        stagesHTML = `⏱ שלב א׳: <b>${s.stage1}</b> שניות מתוך ${s.stage1Max}<br>
+           ⏱ שלב ב׳: <b>${s.stage2}</b> שניות מתוך ${s.stage2Max}<br>
+           ⏱ שלב ג׳: <b>${s.stage3}</b> שניות מתוך ${s.stage3Max}<hr>
+           🏆 סה״כ: <b>${total}</b> מתוך ${totalMax} שניות<br>
+           ${g.rating || ""} ${g.ratingText || ""}`;
+      } else if (levelGroup === "B") {
+        stagesHTML = `⏱ שלב 1: <b>${s.stage1}</b> שניות מתוך ${s.stage1Max}<br>
+           ⏱ שלב 2: <b>${s.stage2}</b> שניות מתוך ${s.stage2Max}<br>
+           ⏱ שלב 3: <b>${s.stage3}</b> שניות מתוך ${s.stage3Max}<hr>
+           🏆 סה״כ: <b>${total}</b> מתוך ${totalMax} שניות
+           ${g.stars ? `<br>⭐ ${g.stars}` : ""}`;
+      } else {
+        stagesHTML = `⏱ שלב 1: <b>${s.stage1}</b> שניות<br>
+           ⏱ שלב 2: <b>${s.stage2}</b> שניות<br>
+           ⏱ שלב 3: <b>${s.stage3}</b> שניות<hr>
+           🏆 סה״כ: <b>${total}</b> שניות
+           ${g.stars ? `<br>⭐ ${g.stars}` : ""}`;
+      }
+
+      let div = document.createElement("div");
+      div.className = "game-card";
+
+      div.innerHTML = `
+        <h3>🎮 משחק ${i + 1}</h3>
+        📅 ${g.date || ""} 🕒 ${g.hour || ""}
+        <hr>
+        ${stagesHTML}
+      `;
+
+      container.appendChild(div);
+    });
   });
 
   drawChart(myGames);

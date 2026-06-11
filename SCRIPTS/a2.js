@@ -97,15 +97,24 @@ function moveToCart(item) {
   clone.style.left = rect.left + "px";
   clone.style.top = rect.top + "px";
   clone.style.width = "46px";
-  clone.style.transition = "0.25s linear";
+  clone.style.transition = "0.4s ease";
   clone.style.zIndex = "9999";
 
   document.body.appendChild(clone);
 
+  let target = document.querySelector(".girl");
+  let targetRect = target.getBoundingClientRect();
+
   setTimeout(() => {
-    clone.style.left = "85%";
-    clone.style.top = "80%";
-    clone.style.transform = "scale(0.4)";
+
+    clone.style.left =
+      targetRect.left + targetRect.width / 2 - 23 + "px";
+
+    clone.style.top =
+      targetRect.top + targetRect.height / 2 - 23 + "px";
+
+    clone.style.transform = "scale(0.3)";
+
   }, 20);
 
   setTimeout(() => {
@@ -117,6 +126,9 @@ function moveToCart(item) {
     if (!cart) {
       cart = document.createElement("div");
       cart.className = "cart-stack";
+      cart.style.position = "absolute";
+      cart.style.bottom = "70px";
+      cart.style.right = "110px";
       bottom.appendChild(cart);
     }
 
@@ -126,11 +138,11 @@ function moveToCart(item) {
     img.style.position = "absolute";
     img.style.right = (score % 3) * 25 + "px";
     img.style.bottom = (score * 2) + "px";
-    img.style.zIndex = score;
+    img.style.zIndex = "9999";
 
     cart.appendChild(img);
 
-  }, 300);
+  }, 450);
 }
 
 // =======================

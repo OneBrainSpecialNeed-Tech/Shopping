@@ -104,9 +104,17 @@ function addToCart(item) {
   clone.style.transition = "0.8s ease";
   clone.style.zIndex = "9999";
 
+  // חשב את מיקום העגלה דינמית מתמונת הילדה
+  let girlImg = document.querySelector(".girl");
+  let girlRect = girlImg.getBoundingClientRect();
+
+  // העגלה היא בערך 20% מהרוחב ו-70% מהגובה של תמונת הילדה
+  let targetLeft = girlRect.left + girlRect.width * 0.10;
+  let targetTop  = girlRect.top  + girlRect.height * 0.30;
+
   setTimeout(() => {
-    clone.style.left = "85%";
-    clone.style.top = "80%";
+    clone.style.left = targetLeft + "px";
+    clone.style.top  = targetTop  + "px";
     clone.style.transform = "scale(0.3)";
   }, 50);
 
@@ -119,7 +127,6 @@ function addToCart(item) {
     inCart.style.bottom = (score * 10) + "px";
     inCart.style.right = "115px";
     inCart.style.transform = `rotate(${Math.random() * 14 - 7}deg)`;
-
     cart.appendChild(inCart);
   }, 900);
 }
